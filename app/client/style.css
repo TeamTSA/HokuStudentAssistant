@@ -4,19 +4,25 @@
 }
 
 .tops {
-  color: #abfdff;
+  color: #abfdff !important;
   font-size: 150px;
   background: url(https://i.redd.it/66hz1cc1ix111.gif);
   text-align: center;
   margin: 0;
   padding: 100px;
-  font-family: 'Abril Fatface', cursive;
+  font-family: 'Abril Fatface', cursive !important;
 }
 
 .hokuhead {
   font-family: 'Abril Fatface', cursive !important;
   color: #abfdff !important;
   font-size: 150px !important;
+}
+
+.info {
+  font-size: 30px !important;
+  color: #abfdff !important;
+  text-shadow: 0 0 10px #000000;
 }
 
 .h2 {
