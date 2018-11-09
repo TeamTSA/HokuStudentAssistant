@@ -5,16 +5,23 @@
 
 .tops {
   color: #abfdff !important;
+  height:500px;
   font-size: 150px;
   background: url(https://i.redd.it/66hz1cc1ix111.gif);
   text-align: center;
-  margin: 0;
-  padding: 100px;
+  margin:0px;
+  padding-top: 0px;
+  padding-bottom: 100px;
   font-family: 'Abril Fatface', cursive !important;
 }
 
+.title-holder {
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
 .hokuhead {
-  font-family: 'Abril Fatface', cursive !important;
   color: #abfdff !important;
   font-size: 150px !important;
 }
@@ -34,12 +41,20 @@
 
 .ltext {
   font-family: 'Volkhov', serif;
-  margin-top: 150px !important;
   padding-right: 50px !important;
+  padding-left: 100px !important;
+  color: #abfdff !important;
+  text-align: justify;
+  font-size: 24px !important;
+}
+
+.rtext {
+  font-family: 'Volkhov', serif;
+  padding-right: 100px !important;
   padding-left: 50px !important;
   color: #abfdff !important;
-  text-align: center;
-  font-size: 30px !important;
+  text-align: justify;
+  font-size: 24px !important;
 }
 
 .td {
@@ -50,17 +65,15 @@
 }
 
 .table {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 100px;
+  margin-right: 100px;
   border-spacing: 200px;
   background-color: transparent !important;
 
 }
 .card {
   text-align: center;
-  border: 10px solid white;
-  box-shadow: 10px 10px 50px 30px #abfdff;
+  box-shadow: 10px 10px 10px 10px #abfdff;
   background: black;
   color: #abfdff;
   font-family: 'Abril Fatface', cursive;
@@ -72,6 +85,11 @@
 }
 
 
+.image-container {
+  margin:50px;
+  padding:50px;
+  text-align: center;
+}
 
 
 .title {
@@ -129,3 +147,18 @@
 .buttoning {
   margin-right: 100px !important;
 }
+
+.body {
+  margin:100px;
+}
+
+.footer {
+  width: 100%;
+  background-color: black;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom:50px;
+  color: white;
+  font-size: 14px;
+}
+
