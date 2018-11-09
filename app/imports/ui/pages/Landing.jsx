@@ -35,12 +35,12 @@ class Landing extends React.Component {
               <Image src='https://mbtskoudsalg.com/images/student-cartoon-png-5.png' />
             </Grid.Column>
             <Grid.Column width={11}>
-              <Header as='h5'> With Hoku, viewing your semesters classes is easier than ever. Simply add in your CRN to be able to view your classes on the Hoku interactive campus map.</Header>
+              <Header as='h5' className='ltext'> With Hoku, viewing your semesters classes is easier than ever. Simply add in your CRN to be able to view your classes on the Hoku interactive campus map.</Header>
             </Grid.Column>
           </Grid>
           <Grid className='table'>
             <Grid.Column width={11}>
-              <Header as='h5'>Advertise campus events to the Hoku users. With Hoku, admins are able to add campus events, which will be shown on the Hoku interactive campus maps.</Header>
+              <Header as='h5' className='ltext'>Advertise campus events to the Hoku users. With Hoku, admins are able to add campus events, which will be shown on the Hoku interactive campus maps.</Header>
             </Grid.Column>
             <Grid.Column className='card' width={5}>
               <Header as='h2' inverted>As a Admin...</Header>
