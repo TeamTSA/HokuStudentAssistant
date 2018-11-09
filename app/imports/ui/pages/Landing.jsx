@@ -70,12 +70,13 @@ class Landing extends React.Component {
             <Grid>
               <Grid.Row centered>
                 <Grid.Column textAlign='center'>
-                  <Container text-align={'center'}
+                  <Container textAlign='center'>
                   <Header as='h1' inverted className='instruct'> To get started, login or register now</Header>
                   <Button className='buttoning' as={NavLink} activeClassName="active" exact to="/signin" key='signin'>
                     Log In
                   </Button>
                   <Button as={NavLink} activeClassName="active" exact to="/signup" key='signup'>Register Now</Button>
+                  </Container>
                 </Grid.Column>
               </Grid.Row>
 

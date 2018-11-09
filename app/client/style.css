@@ -151,3 +151,14 @@
 .body {
   margin:100px;
 }
+
+.footer {
+  width: 100%;
+  background-color: black;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom:50px;
+  color: white;
+  font-size: 14px;
+}
+

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Container} from 'semantic-ui-react';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 class Footer extends React.Component {
@@ -6,10 +7,10 @@ class Footer extends React.Component {
     const divStyle = { paddingTop: '15px'};
     return (
         <footer>
-          <div style={divStyle} className="ui center aligned container" color='grey'>
-            <hr />
-              Washer Watcher <br />
-              ICS 314
+          <div style={divStyle} className="footer">
+            <hr></hr>
+            <br></br>
+                Hoku: A UH Manoa Initiative
           </div>
         </footer>
     );
