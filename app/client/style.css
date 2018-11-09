@@ -1,0 +1,62 @@
+.washerwatcher-landing-background {
+  padding: 30px 10px 30px 10px;
+  background: linear-gradient( rgba(0,0,0,.3), rgba(0,0,0,.3) ),
+  url('/images/washer.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.title {
+  font-size: 72px !important;
+}
+
+.subheader {
+  font-size: 36px !important;
+}
+
+.overlay {
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  overflow: auto;
+  top: 0px;
+  left: 0px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.blankspace {
+  padding: 70px 0px 0px 0px;
+}
+
+.instruct {
+  font-size: 40px !important;
+}
+
+.top-header {
+  padding-top: 12px !important;
+}
+
+.right-button {
+  text-align: right;
+}
+
+.available {
+  background-color: #21BA45 !important;
+}
+
+.in-use {
+  background-color: #daa300 !important;
+}
+
+.out-of-order {
+  background-color: #DB2828 !important;
+}
+
+.status {
+  color: white !important;
+  display: inline-block !important;
+}
+
+.buttoning {
+  margin-right: 100px !important;
+}

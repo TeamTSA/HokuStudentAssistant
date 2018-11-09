@@ -1,18 +1,16 @@
 import React from 'react';
-import { Stuffs, StuffSchema } from '/imports/api/stuff/stuff';
-import { Grid, Segment, Header } from 'semantic-ui-react';
+import { Notes, NoteSchema } from '/imports/api/note/note';
+import { Segment } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
-import NumField from 'uniforms-semantic/NumField';
-import SelectField from 'uniforms-semantic/SelectField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 import HiddenField from 'uniforms-semantic/HiddenField';
 import ErrorsField from 'uniforms-semantic/ErrorsField';
 import { Bert } from 'meteor/themeteorchef:bert';
-import { Meteor } from 'meteor/meteor';
+import PropTypes from 'prop-types';
 
 /** Renders the Page for adding a document. */
-class AddStuff extends React.Component {
+class AddNote extends React.Component {
 
   /** Bind 'this' so that a ref to the Form can be saved in formRef and communicated between render() and submit(). */
   constructor(props) {
@@ -34,31 +32,32 @@ class AddStuff extends React.Component {
 
   /** On submit, insert the data. */
   submit(data) {
-    const { name, quantity, condition } = data;
-    const owner = Meteor.user().username;
-    Stuffs.insert({ name, quantity, condition, owner }, this.insertCallback);
+    const { note, machineId, createdAt } = data;
+    Notes.insert({ note, machineId, createdAt }, this.insertCallback);
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
     return (
-        <Grid container centered>
-          <Grid.Column>
-            <Header as="h2" textAlign="center">Add Stuff</Header>
-            <AutoForm ref={(ref) => { this.formRef = ref; }} schema={StuffSchema} onSubmit={this.submit}>
-              <Segment>
-                <TextField name='name'/>
-                <NumField name='quantity' decimal={false}/>
-                <SelectField name='condition'/>
-                <SubmitField value='Submit'/>
-                <ErrorsField/>
-                <HiddenField name='owner' value='fakeuser@foo.com'/>
-              </Segment>
-            </AutoForm>
-          </Grid.Column>
-        </Grid>
+        <AutoForm ref={(ref) => {
+          this.formRef = ref;
+        }} schema={NoteSchema} onSubmit={this.submit}>
+          <Segment>
+            <TextField label="Add a timestamped note" name='note'/>
+            <div className='right-button'>
+              <SubmitField value='Submit'/>
+            </div>
+            <ErrorsField/>
+            <HiddenField name='machineId' value={this.props.machineId}/>
+            <HiddenField name='createdAt' value={new Date()}/>
+          </Segment>
+        </AutoForm>
     );
   }
 }
 
-export default AddStuff;
+AddNote.propTypes = {
+  machineId: PropTypes.string.isRequired,
+};
+
+export default AddNote;
