@@ -7,10 +7,12 @@ class Footer extends React.Component {
     const divStyle = { paddingTop: '15px'};
     return (
         <footer>
-          <div style={divStyle} className="footer">
-            <hr></hr>
-            <br></br>
-                Hoku: A UH Manoa Initiative
+          <div style={divStyle} className="ui center aligned container" color='black'>
+            <hr />
+            <br />
+              Department of Information and Computer Sciences <br />
+              University of Hawaii <br />
+              Honolulu, HI 96822 
           </div>
         </footer>
     );
