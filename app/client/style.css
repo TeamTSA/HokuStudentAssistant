@@ -3,7 +3,7 @@
   background: url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/IjFi-wx/simulated-stars-in-night-sky_v1fysmn7__F0000.png) !important;
 }
 
-.top {
+.tops {
   color: #abfdff;
   font-size: 150px;
   background: url(https://i.redd.it/66hz1cc1ix111.gif);
@@ -13,18 +13,31 @@
   font-family: 'Abril Fatface', cursive;
 }
 
-h1,h2,p,td {
+
+.h2 {
   font-family: 'Volkhov', serif;
   color: #abfdff;
   text-align: center;
   font-size: 30px;
 }
 
-h1 {
-  font-family: 'Abril Fatface', cursive;
+.p {
+  font-family: 'Volkhov', serif;
+  color: #abfdff;
+  text-align: center;
+  font-size: 30px;
 }
 
-td{
+.td {
+  font-family: 'Volkhov', serif;
+  color: #abfdff;
+  text-align: center;
+  font-size: 30px;
+}
+
+
+
+.td{
   font-size: 20px;
 }
 
