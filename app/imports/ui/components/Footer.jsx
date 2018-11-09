@@ -11,6 +11,8 @@ class Footer extends React.Component {
             <hr></hr>
             <br></br>
                 Hoku: A UH Manoa Initiative
+            <br></br>
+            Information and Computer Sciences
           </div>
         </footer>
     );
