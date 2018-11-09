@@ -32,9 +32,9 @@ class NavBar extends React.Component {
 
   renderMobile() {
     return (
-        <Menu attached="top" borderless inverted color='grey'>
+        <Menu attached="top" borderless inverted color='black'>
           <Menu.Item as={NavLink} activeClassName="" exact to="/">
-            <Header inverted as='h1'>Washer Watcher</Header>
+            <Header inverted as='h1'>Hoku</Header>
           </Menu.Item>
           <Menu.Item position='right'>
             <Dropdown icon='content' text='Menu' direction='left' pointing='top right'>
@@ -75,9 +75,9 @@ class NavBar extends React.Component {
 
   renderDesktop() {
     return (
-        <Menu attached="top" borderless inverted color='grey'>
+        <Menu attached="top" borderless inverted color='black'>
           <Menu.Item as={NavLink} activeClassName="" exact to="/">
-            <Header inverted as='h1'>Washer Watcher</Header>
+            <Header inverted as='h1'>Hoku</Header>
           </Menu.Item>
           {this.props.currentUser ? (
               [<Menu.Item as={NavLink} activeClassName="active" exact to="/machines" key='machines'>Check
