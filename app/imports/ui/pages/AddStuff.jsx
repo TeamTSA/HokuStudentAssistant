@@ -18,6 +18,7 @@ class AddStuff extends React.Component {
   constructor(props) {
     super(props);
     this.submit = this.submit.bind(this);
+    this.render = this.render.bind(this);
     this.insertCallback = this.insertCallback.bind(this);
     this.formRef = null;
   }
@@ -25,9 +26,9 @@ class AddStuff extends React.Component {
   /** Notify the user of the results of the submit. If successful, clear the form. */
   insertCallback(error) {
     if (error) {
-      Bert.alert({ type: 'danger', message: `Add failed: ${error.message}`, style: 'growl-bottom-right' });
+      Bert.alert({ type: 'danger', message: `Add failed: ${error.message}` });
     } else {
-      Bert.alert({ type: 'success', message: 'Add succeeded', style: 'growl-bottom-right' });
+      Bert.alert({ type: 'success', message: 'Add succeeded' });
       this.formRef.reset();
     }
   }
