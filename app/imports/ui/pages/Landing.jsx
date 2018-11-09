@@ -18,9 +18,9 @@ class Landing extends React.Component {
 
         <div className='hoku-landing-background'>
           <Grid>
-            <Grid.Row centered>
+            <Grid.Row centered className='tops'>
               <Grid.Column textAlign='center'>
-                <Header as='h1' inverted className='tops'>H O K U</Header>
+                <Header as='h1' inverted className='hokuhead'>H O K U</Header>
                 <Header as='h3' inverted className='info'>Easily navigate through college using Hoku, an interactive campus map showing campus events, classes, eateries, and bathrooms.</Header>
               </Grid.Column>
             </Grid.Row>
@@ -31,7 +31,7 @@ class Landing extends React.Component {
 
           <Grid className='table'>
             <Grid.Column className='card' width={5}>
-              <Header as='h2'>As a Student...</Header>
+              <Header as='h2' inverted>As a Student...</Header>
               <Image src='https://mbtskoudsalg.com/images/student-cartoon-png-5.png' />
             </Grid.Column>
             <Grid.Column width={11}>
@@ -43,7 +43,7 @@ class Landing extends React.Component {
               <Header as='h5'>Advertise campus events to the Hoku users. With Hoku, admins are able to add campus events, which will be shown on the Hoku interactive campus maps.</Header>
             </Grid.Column>
             <Grid.Column className='card' width={5}>
-              <Header as='h2'>As a Admin...</Header>
+              <Header as='h2' inverted>As a Admin...</Header>
               <Image src='https://s3-ap-southeast-2.amazonaws.com/autom-io-home-assets/Uploads/3-office-workers-graphic.png' />
             </Grid.Column>
           </Grid>

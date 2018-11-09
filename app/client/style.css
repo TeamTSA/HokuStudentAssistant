@@ -13,6 +13,11 @@
   font-family: 'Abril Fatface', cursive;
 }
 
+.hokuhead {
+  font-family: 'Abril Fatface', cursive;
+  color: #abfdff;
+  font-size: 150px;
+}
 
 .h2 {
   font-family: 'Volkhov', serif;
@@ -33,12 +38,6 @@
   color: #abfdff;
   text-align: center;
   font-size: 30px;
-}
-
-
-
-.td{
-  font-size: 20px;
 }
 
 .table {
