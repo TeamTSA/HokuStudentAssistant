@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Grid, Icon, Header, Image, Button, Modal } from 'semantic-ui-react';
+import { Grid, Icon, Header, Image, Button, Modal, Container } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 
 const inlineStyle = {
@@ -34,29 +34,43 @@ class Landing extends React.Component {
             </Grid.Row>
           </Grid>
 
+            <div className="body">
           <Grid className='table'>
-            <Grid.Column className='card' width={5}>
+            <Grid.Column className='card' width={8}>
+              <Container text-align='center'>
               <Header as='h2' inverted>As a Student...</Header>
-              <Image src='https://mbtskoudsalg.com/images/student-cartoon-png-5.png' />
+                <Image src='https://mbtskoudsalg.com/images/student-cartoon-png-5.png' />
+              </Container>
             </Grid.Column>
-            <Grid.Column width={11}>
+            <Grid.Column width={8}>
+              <Container text-align='center'>
               <Header as='h5' className='ltext'> With Hoku, viewing your semesters classes is easier than ever. Simply add in your CRN to be able to view your classes on the Hoku interactive campus map.</Header>
+              </Container>
             </Grid.Column>
           </Grid>
+            </div>
+            <div className="body">
           <Grid className='table'>
-            <Grid.Column width={11}>
-              <Header as='h5' className='ltext'>Advertise campus events to the Hoku users. With Hoku, admins are able to add campus events, which will be shown on the Hoku interactive campus maps.</Header>
+            <Grid.Column width={8}>
+              <Container text-align='center'>
+              <Header as='h5' className='rtext'>Advertise campus events to the Hoku users. With Hoku, admins are able to add campus events, which will be shown on the Hoku interactive campus maps.</Header>
+              </Container>
             </Grid.Column>
-            <Grid.Column className='card' width={5}>
+            <Grid.Column className='card' width={8}>
+              <Container text-align='center'>
               <Header as='h2' inverted>As a Admin...</Header>
               <Image src='https://s3-ap-southeast-2.amazonaws.com/autom-io-home-assets/Uploads/3-office-workers-graphic.png' />
+              </Container>
             </Grid.Column>
           </Grid>
+            </div>
 
+            <div classname="body">
           {!Meteor.userId() &&
             <Grid>
               <Grid.Row centered>
                 <Grid.Column textAlign='center'>
+                  <Container text-align={'center'}
                   <Header as='h1' inverted className='instruct'> To get started, login or register now</Header>
                   <Button className='buttoning' as={NavLink} activeClassName="active" exact to="/signin" key='signin'>
                     Log In
@@ -69,6 +83,7 @@ class Landing extends React.Component {
               </Grid.Row>
             </Grid>
           }
+            </div>
           </container>
         </div>
     );
