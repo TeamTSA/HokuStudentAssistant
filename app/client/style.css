@@ -1,9 +1,55 @@
-.washerwatcher-landing-background {
+.hoku-landing-background {
   padding: 30px 10px 30px 10px;
-  background: linear-gradient( rgba(0,0,0,.3), rgba(0,0,0,.3) ),
-  url('/images/washer.jpg') no-repeat center center fixed;
-  background-size: cover;
+  background: url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/IjFi-wx/simulated-stars-in-night-sky_v1fysmn7__F0000.png) !important;
 }
+
+.top {
+  color: #abfdff;
+  font-size: 150px;
+  background: url(https://i.redd.it/66hz1cc1ix111.gif);
+  text-align: center;
+  margin: 0;
+  padding: 100px;
+  font-family: 'Abril Fatface', cursive;
+}
+
+h1,h2,p,td {
+  font-family: 'Volkhov', serif;
+  color: #abfdff;
+  text-align: center;
+  font-size: 30px;
+}
+
+h1 {
+  font-family: 'Abril Fatface', cursive;
+}
+
+td{
+  font-size: 20px;
+}
+
+table {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  border-spacing: 200px;
+}
+.card {
+  text-align: center;
+  border: 10px solid white;
+  box-shadow: 10px 10px 50px 30px #abfdff;
+  background: black;
+  color: #abfdff;
+  font-family: 'Abril Fatface', cursive;
+}
+
+.end{
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+
+
 
 .title {
   font-size: 72px !important;

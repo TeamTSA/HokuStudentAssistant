@@ -16,7 +16,7 @@ class Landing extends React.Component {
   render() {
     return (
 
-        <div className='washerwatcher-landing-background'>
+        <div className='hoku-landing-background'>
           <Grid>
             <Grid.Row centered>
               <Grid.Column textAlign='center'>
