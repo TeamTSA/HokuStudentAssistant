@@ -39,7 +39,7 @@ class NavBar extends React.Component {
           <Menu.Item position='right'>
             <Dropdown icon='content' text='Menu' direction='left' pointing='top right'>
               <Dropdown.Menu>
-                
+
                   <Menu.Item as={NavLink} activeClassName="" exact to="/">MAP</Menu.Item>
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/faq" key='faq'>FAQ</Menu.Item>
 
