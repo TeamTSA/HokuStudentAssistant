@@ -17,11 +17,16 @@ class Landing extends React.Component {
     return (
 
         <div className='hoku-landing-background'>
+          <container>
           <Grid>
             <Grid.Row centered className='tops'>
               <Grid.Column textAlign='center'>
-                <Header as='h1' inverted className='hokuhead'>H O K U</Header>
-                <Header as='h3' inverted className='info'>Easily navigate through college using Hoku, an interactive campus map showing campus events, classes, eateries, and bathrooms.</Header>
+                <container>
+                  <div className="title-holder">
+                <Header as='h1' inverted className="hokuhead">H O K U</Header>
+                <Header as='h3' inverted>Easily navigate through college using Hoku, an interactive campus map showing campus events, classes, eateries, and bathrooms.</Header>
+                </div>
+                </container>
               </Grid.Column>
             </Grid.Row>
 
@@ -64,6 +69,7 @@ class Landing extends React.Component {
               </Grid.Row>
             </Grid>
           }
+          </container>
         </div>
     );
   }

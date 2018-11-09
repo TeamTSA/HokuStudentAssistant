@@ -5,16 +5,23 @@
 
 .tops {
   color: #abfdff !important;
+  height:500px;
   font-size: 150px;
   background: url(https://i.redd.it/66hz1cc1ix111.gif);
   text-align: center;
-  margin: 0;
-  padding: 100px;
+  margin:0px;
+  padding-top: 0px;
+  padding-bottom: 100px;
   font-family: 'Abril Fatface', cursive !important;
 }
 
+.title-holder {
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
 .hokuhead {
-  font-family: 'Abril Fatface', cursive !important;
   color: #abfdff !important;
   font-size: 150px !important;
 }
