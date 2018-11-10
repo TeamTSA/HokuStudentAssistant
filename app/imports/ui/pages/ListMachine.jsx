@@ -56,6 +56,11 @@ class ListMachines extends React.Component {
           />
         </Container>
         </Segment>
+        <Segment>
+        <Container className="addClass">
+        <Button primary className='addClassBut'>Add Classes</Button>
+        </Container>
+        </Segment>
      </Segment.Group>
      </Grid.Column>
       </Grid.Row>
