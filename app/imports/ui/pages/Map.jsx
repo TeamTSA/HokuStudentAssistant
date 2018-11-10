@@ -10,7 +10,7 @@ import { Machines } from '../../api/machine/machine';
 import AddWasher from '../components/AddWasher';
 import AvailabilityCount from '../components/AvailabilityCount';
 import Calendar from 'react-calendar';
-import { Link, Redirect } from 'react-router-dom';
+
 
 
 /** Renders a page with all the washing machines as a MachineCard */
@@ -19,14 +19,7 @@ class Map extends React.Component {
       date: new Date(),
     }
 
-    onChange = date => this.setState({ date })
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      canModify: Roles.userIsInRole(Meteor.userId(), 'admin') || Roles.userIsInRole(Meteor.userId(), 'super-admin'),
-    };
-  }
+    onChange = date => this.setState({ date });
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -78,11 +71,6 @@ class Map extends React.Component {
   }
 }
 
-/** Require an array of Machine documents in the props. */
-Map.propTypes = {
-  machines: PropTypes.array.isRequired,
-  ready: PropTypes.bool.isRequired,
-};
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
