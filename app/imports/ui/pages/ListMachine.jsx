@@ -12,12 +12,18 @@ import AvailabilityCount from '../components/AvailabilityCount';
 
 /** Renders a page with all the washing machines as a MachineCard */
 class ListMachines extends React.Component {
-
+<<<<<<< HEAD:app/imports/ui/pages/ListMachine.jsx
+<<<<<<< HEAD:app/imports/ui/pages/ListMachine.jsx
+=======
+=======
+>>>>>>> parent of ce18c12... Merge branch 'issue-2':app/imports/ui/pages/ListMachine.jsx
   state = {
       date: new Date(),
     }
 
     onChange = date => this.setState({ date })
+
+>>>>>>> parent of ce18c12... Merge branch 'issue-2':app/imports/ui/pages/ListMachine.jsx
   constructor(props) {
     super(props);
     this.state = {

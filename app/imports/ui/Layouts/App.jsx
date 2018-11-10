@@ -8,6 +8,7 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ListStuff from '../pages/ListStuff';
+import WashingMachineNotes from '../pages/WashingMachineNotes';
 import AddStuff from '../pages/AddStuff';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
@@ -15,6 +16,7 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import ListMachine from '../pages/ListMachine';
+import UpdateWasherStatus from '../pages/UpdateWasherStatus';
 import Info from '../pages/Info';
 import Preferences from '../pages/Preferences';
 import Admin from '../pages/Admin';
@@ -32,6 +34,8 @@ class App extends React.Component {
               <Route path="/signup" component={Signup}/>
               <ProtectedRoute path="/machines" component={ListMachine}/>
               <ProtectedRoute path="/list" component={ListStuff}/>
+              <ProtectedRoute path="/notes/:_id" component={WashingMachineNotes}/>
+              <ProtectedRoute path="/update/:_id" component={UpdateWasherStatus}/>
               <ProtectedRoute path="/faq" component={Info}/>
               <ProtectedRoute path="/add" component={AddStuff}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
