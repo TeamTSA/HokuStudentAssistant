@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, Input, TextArea } from 'semantic-ui-react';
 import { Container, Header } from 'semantic-ui-react';
+import {Stuffs, StuffSchema } from '../../api/stuff/stuff';
 
 const options = [
   { key: 'm', text: 'Male', value: 'male' },
