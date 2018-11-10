@@ -12,7 +12,7 @@ import AvailabilityCount from '../components/AvailabilityCount';
 import Calendar from 'react-calendar';
 
 /** Renders a page with all the washing machines as a MachineCard */
-class ListMachines extends React.Component {
+class Map extends React.Component {
   state = {
       date: new Date(),
     }
@@ -70,7 +70,7 @@ class ListMachines extends React.Component {
 }
 
 /** Require an array of Machine documents in the props. */
-ListMachines.propTypes = {
+Map.propTypes = {
   machines: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -83,4 +83,4 @@ export default withTracker(() => {
     machines: Machines.find({}).fetch(),
     ready: subscription.ready(),
   };
-})(ListMachines);
+})(Map);
