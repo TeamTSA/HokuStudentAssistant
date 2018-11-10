@@ -78,14 +78,6 @@ export default class Signup extends React.Component {
                       type="password"
                       onChange={this.handleChange}
                   />
-                  <Form.Dropdown
-                      placeholder='Select Dorm'
-                      search selection
-                      name='dorm'
-                      label='Dorm'
-                      options={dormOptions}
-                      onChange={this.handleChange}
-                  />
                   <Form.Button content="Submit"/>
                 </Segment>
               </Form>
