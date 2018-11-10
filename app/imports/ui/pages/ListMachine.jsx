@@ -9,6 +9,8 @@ import MachineCard from '/imports/ui/components/MachineCard';
 import { Machines } from '../../api/machine/machine';
 import AddWasher from '../components/AddWasher';
 import AvailabilityCount from '../components/AvailabilityCount';
+import Calendar from 'react-calendar';
+
 
 /** Renders a page with all the washing machines as a MachineCard */
 class ListMachines extends React.Component {
@@ -46,6 +48,14 @@ class ListMachines extends React.Component {
         <br />
         <Checkbox label='Bathroom' className='checkBox'/>
      </Segment>
+     <Segment>
+     <Container className='calen'>
+          <Calendar className='calen'
+            onChange={this.onChange}
+            value={this.state.date}
+          />
+        </Container>
+        </Segment>
      </Segment.Group>
      </Grid.Column>
       </Grid.Row>
