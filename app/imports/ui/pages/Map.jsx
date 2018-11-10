@@ -36,6 +36,11 @@ class Map extends React.Component {
     return (
         <Grid columns={2} stackable>
         <Grid.Row>
+        <Grid.Column width={6}>
+        <Container>
+        <Header as='h1' textAlign='center'>Map</Header>
+        </Container>
+        </Grid.Column>
    <Grid.Column width={6} floated="right">
    <Segment.Group>
      <Segment><Header as='h2' content='Display' textAlign='center'/></Segment>
