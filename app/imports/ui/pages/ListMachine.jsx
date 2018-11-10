@@ -2,23 +2,16 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { NavLink } from 'react-router-dom';
-import { Container, Card, Header, Loader, Message, Grid, Segment, Checkbox, Button } from 'semantic-ui-react';
+import { Container, Card, Header, Loader, Message, Grid } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import MachineCard from '/imports/ui/components/MachineCard';
 import { Machines } from '../../api/machine/machine';
 import AddWasher from '../components/AddWasher';
 import AvailabilityCount from '../components/AvailabilityCount';
-import Calendar from 'react-calendar';
 
 /** Renders a page with all the washing machines as a MachineCard */
 class ListMachines extends React.Component {
-  state = {
-      date: new Date(),
-    }
-
-    onChange = date => this.setState({ date })
-
   constructor(props) {
     super(props);
     this.state = {
@@ -34,37 +27,31 @@ class ListMachines extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
-        <Grid columns={2} stackable>
-        <Grid.Row>
-   <Grid.Column width={6} floated="right">
-   <Segment.Group>
-     <Segment><Header as='h2' content='Display' textAlign='center'/></Segment>
-     <Segment>
-        <Checkbox label='Classes' className='checkbox'/>
-        <br />
-        <Checkbox label='Events' className='checkBox'/>
-        <br />
-        <Checkbox label='Food' className='checkBox'/>
-        <br />
-        <Checkbox label='Bathroom' className='checkBox'/>
-     </Segment>
-     <Segment>
-     <Container className='calen'>
-          <Calendar className='calen'
-            onChange={this.onChange}
-            value={this.state.date}
-          />
+        <Container>
+          <Grid centered>
+            <Grid.Row>
+              <Header as="h2" textAlign="center" className='top-header'>Washing Machines</Header>
+            </Grid.Row>
+            <Grid.Row style={{ paddingTop: '0' }}>
+              <AvailabilityCount machines={this.props.machines}/>
+            </Grid.Row>
+            {this.state.canModify ? <Grid.Row><AddWasher/></Grid.Row> : ''}
+          </Grid>
+          {this.props.machines.length === 0 ?
+              <Message>
+                <Message.Header>
+                  No washing machines found!
+                </Message.Header>
+                <p>
+                  It looks like either your dorm does not have any washing machines or you have not set your dorm. <br/>
+                  <NavLink to='/preferences'>Click here</NavLink> to go to your preferences to set your dorm if you have
+                  not done so already.
+                </p>
+              </Message>
+              :
+              <Card.Group>{this.props.machines.map((machine) => <MachineCard key={machine._id}
+                                                                             machine={machine}/>)}</Card.Group>}
         </Container>
-        </Segment>
-        <Segment>
-        <Container className="addClass">
-        <Button primary className='addClasses'>Add Classes</Button>
-        </Container>
-        </Segment>
-     </Segment.Group>
-   </Grid.Column>
-   </Grid.Row>
- </Grid>
     );
   }
 }
