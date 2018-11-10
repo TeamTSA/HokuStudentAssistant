@@ -65,7 +65,7 @@ class Landing extends React.Component {
           </Grid>
             </div>
 
-            <div classname="body">
+            <div className="body">
           {!Meteor.userId() &&
             <Grid>
               <Grid.Row centered>
