@@ -58,7 +58,7 @@ class ListMachines extends React.Component {
         </Segment>
         <Segment>
         <Container className="addClass">
-        <Button primary className='addClasses'>Add Classes</Button>
+        <Button primary className='addClassBut'>Add Classes</Button>
         </Container>
         </Segment>
      </Segment.Group>
