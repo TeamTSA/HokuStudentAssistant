@@ -15,7 +15,7 @@ import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
-import Map from '../pages/Map';
+import ListMachine from '../pages/ListMachine';
 import UpdateWasherStatus from '../pages/UpdateWasherStatus';
 import Info from '../pages/Info';
 import Preferences from '../pages/Preferences';
@@ -32,7 +32,7 @@ class App extends React.Component {
               <Route exact path="/" component={Landing}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
-              <ProtectedRoute path="/map" component={Map}/>
+              <ProtectedRoute path="/machines" component={ListMachine}/>
               <ProtectedRoute path="/list" component={ListStuff}/>
               <ProtectedRoute path="/notes/:_id" component={WashingMachineNotes}/>
               <ProtectedRoute path="/update/:_id" component={UpdateWasherStatus}/>
