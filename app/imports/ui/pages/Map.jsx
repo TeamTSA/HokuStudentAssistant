@@ -1,17 +1,37 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
+import { NavLink } from 'react-router-dom';
 import { Container, Card, Header, Loader, Message, Grid, Segment, Checkbox, Button } from 'semantic-ui-react';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
+import MachineCard from '/imports/ui/components/MachineCard';
+import { Machines } from '../../api/machine/machine';
+import AddWasher from '../components/AddWasher';
+import AvailabilityCount from '../components/AvailabilityCount';
 import Calendar from 'react-calendar';
+import { Link, Redirect } from 'react-router-dom';
 
 
+/** Renders a page with all the washing machines as a MachineCard */
 class Map extends React.Component {
   state = {
       date: new Date(),
     }
 
     onChange = date => this.setState({ date })
-    ;
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      canModify: Roles.userIsInRole(Meteor.userId(), 'admin') || Roles.userIsInRole(Meteor.userId(), 'super-admin'),
+    };
+  }
+
+  /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
+  render() {
+    return (this.props.ready) ? this.renderPage() : <Loader>Getting data</Loader>;
+  }
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
@@ -57,3 +77,19 @@ class Map extends React.Component {
     );
   }
 }
+
+/** Require an array of Machine documents in the props. */
+Map.propTypes = {
+  machines: PropTypes.array.isRequired,
+  ready: PropTypes.bool.isRequired,
+};
+
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+export default withTracker(() => {
+  // Get access to Machine documents.
+  const subscription = Meteor.subscribe('Machine');
+  return {
+    machines: Machines.find({}).fetch(),
+    ready: subscription.ready(),
+  };
+})(Map);
