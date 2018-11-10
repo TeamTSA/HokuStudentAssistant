@@ -11,14 +11,14 @@ import AddWasher from '../components/AddWasher';
 import AvailabilityCount from '../components/AvailabilityCount';
 import Calendar from 'react-calendar';
 
-
 /** Renders a page with all the washing machines as a MachineCard */
-class ListMachines extends React.Component {
+class Map extends React.Component {
   state = {
       date: new Date(),
     }
 
     onChange = date => this.setState({ date })
+
   constructor(props) {
     super(props);
     this.state = {
@@ -34,12 +34,12 @@ class ListMachines extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
-      <Grid columns={2} stackable>
-      <Grid.Row>
-      <Grid.Column width={6} floated='right'>
-      <Segment.Group>
-      <Segment><Header as='h2' content='Display' textAlign='center'/></Segment>
-      <Segment>
+        <Grid columns={2} stackable>
+        <Grid.Row>
+   <Grid.Column width={6} floated="right">
+   <Segment.Group>
+     <Segment><Header as='h2' content='Display' textAlign='center'/></Segment>
+     <Segment>
         <Checkbox label='Classes' className='checkbox'/>
         <br />
         <Checkbox label='Events' className='checkBox'/>
@@ -62,15 +62,15 @@ class ListMachines extends React.Component {
         </Container>
         </Segment>
      </Segment.Group>
-     </Grid.Column>
-      </Grid.Row>
-      </Grid>
+   </Grid.Column>
+   </Grid.Row>
+ </Grid>
     );
   }
 }
 
 /** Require an array of Machine documents in the props. */
-ListMachines.propTypes = {
+Map.propTypes = {
   machines: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -83,4 +83,4 @@ export default withTracker(() => {
     machines: Machines.find({}).fetch(),
     ready: subscription.ready(),
   };
-})(ListMachines);
+})(Map);
