@@ -10,6 +10,8 @@ import { Machines } from '../../api/machine/machine';
 import AddWasher from '../components/AddWasher';
 import AvailabilityCount from '../components/AvailabilityCount';
 import Calendar from 'react-calendar';
+import { Link, Redirect } from 'react-router-dom';
+
 
 /** Renders a page with all the washing machines as a MachineCard */
 class Map extends React.Component {
@@ -63,7 +65,9 @@ class Map extends React.Component {
         </Segment>
         <Segment>
         <Container className="addClass">
+        <a href="/#/add">
         <Button primary className='addClassBut'>Add Classes</Button>
+        </a>
         </Container>
         </Segment>
      </Segment.Group>
