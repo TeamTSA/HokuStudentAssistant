@@ -15,7 +15,7 @@ class AddStuff extends Component {
   render() {
     const { value } = this.state;
     return (
-        <Container>
+        <Container text className='add-event-container'>
         <Form>
           <Header as="h2" textAlign="center">Add Event</Header>
           <Form.Group widths='equal'>
