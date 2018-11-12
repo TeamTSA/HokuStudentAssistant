@@ -51,7 +51,7 @@ export default class Signin extends React.Component {
     }
     // Otherwise return the Login form.
     return (
-        <Container>
+        <Container className='login'>
           <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
             <Grid.Column>
               <Header as="h2" textAlign="center" className='top-header'>
@@ -77,14 +77,14 @@ export default class Signin extends React.Component {
                       type="password"
                       onChange={this.handleChange}
                   />
+                  <div className='left-button'>
+                    <Link to="/signup">Don't have an account? Register here</Link>
+                  </div>
                   <div className='right-button'>
                     <Form.Button content="Submit"/>
                   </div>
                 </Segment>
               </Form>
-              <Message>
-                <Link to="/signup">Click here to Register</Link>
-              </Message>
               {this.state.error === '' ? (
                   ''
               ) : (
