@@ -7,6 +7,7 @@ import SimpleSchema from 'simpl-schema';
 const userCourseSchema = new SimpleSchema({
   user_id: Number,
   courseCRN: Number,
+  courseCampus: Number,
 });
 
 export const UserCourses = new Mongo.Collection('userCourses');
