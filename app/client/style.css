@@ -177,3 +177,25 @@
    width: 50%;
    padding: 10px;
 }
+
+.login {
+  margin-top: 25px;
+  margin-bottom: 50px;
+}
+
+.left-button {
+  text-align: left;
+}
+
+.faq-container {
+  margin-top: 25px;
+  margin-bottom: 50px;
+  height: 400px;
+}
+
+.add-event-container {
+  margin-top: 25px;
+  margin-bottom: 50px;
+}
+
+
