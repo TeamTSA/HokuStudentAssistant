@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Courses } from '/imports/api/courses/courses';
 import { CourseLocations } from '/imports/api/courses/courseLocations';
-import { Users } from '/imports/api/users/users';
+import { UserProfiles } from '/imports/api/users/userProfiles';
 import SimpleSchema from 'simpl-schema';
 import { Container, Header, Button, Form } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import AutoField from 'uniforms-semantic/AutoField';
+import { Meteor } from 'meteor/meteor'
 
 
 class AddClass extends Component {
