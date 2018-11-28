@@ -1,5 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
+import { Tracker } from 'meteor/tracker';
+
 
 /** Create a Meteor collection. */
 const eventsLocation = new Mongo.Collection('eventsLocation');
