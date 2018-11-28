@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { Button, Form, Input, TextArea } from 'semantic-ui-react';
+import { Grid, Segment, Header, Button, Form, Input, TextArea } from 'semantic-ui-react';
+import { Events, EventsSchema } from '/imports/api/events/events';
 import { Container, Header } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import AutoField from 'uniforms-semantic/AutoField';
+import TextField from 'uniforms-semantic/TextField';
+import SubmitField from 'uniforms-semantic/SubmitField';
+import ErrorsField from 'uniforms-semantic/ErrorsField';
 import SimpleSchema from 'simpl-schema';
 
 const options = [
@@ -11,9 +15,29 @@ const options = [
 ];
 
 class AddEvent extends Component {
-  state = {}
+  /** Bind 'this' so that a ref to the Form can be saved in formRef and communicated between render() and submit(). */
+  constructor(props) {
+    super(props);
+    this.submit = this.submit.bind(this);
+    this.insertCallback = this.insertCallback.bind(this);
+    this.formRef = null;
+  }
 
-  handleChange = (e, { value }) => this.setState({ value })
+  /** Notify the user of the results of the submit. If successful, clear the form. */
+  insertCallback(error) {
+    if (error) {
+      Bert.alert({ type: 'danger', message: `Add failed: ${error.message}`, style: 'growl-bottom-right' });
+    } else {
+      Bert.alert({ type: 'success', message: 'Add succeeded', style: 'growl-bottom-right' });
+      this.formRef.reset();
+    }
+  }
+
+  /** On submit, insert the data. */
+  submit(data) {
+    const { eventName, eventType, eventLocation, eventStartDate, eventEndDate, eventDescription } = data;
+    Events.insert({ eventName, eventType, eventLocation, eventStartDate, eventEndDate, eventDescription }, this.insertCallback);
+  }
 
   render() {
     // TODO: (Cammy) add acceptable location codes & event types to schema accepted values for location and event types
@@ -30,6 +54,7 @@ class AddEvent extends Component {
       },
     })
     return (
+        /*
         <Container text className='add-event-container'>
         <AutoForm schema={formSchema}>
           <Header as="h2" textAlign="center">Add Event</Header>
@@ -47,7 +72,25 @@ class AddEvent extends Component {
           <AutoField name='eventDescription' label='Description' placeholder='Description' />
           <Form.Field control={Button}>Submit</Form.Field>
         </AutoForm>
-        </Container>
+        */
+
+          <Grid container centered>
+            <Grid.Column>
+              <Header as="h2" textAlign="center">Add Event</Header>
+              <AutoForm ref={(ref) => { this.formRef = ref; }} schema={EventsSchema} onSubmit={this.submit}>
+                <Segment>
+                  <TextField name='eventName'/>
+                  <TextField name='eventType'/>
+                  <TextField name='eventLocation'/>
+                  <DateField name='eventStartDate'/>
+                  <DateField name='eventEndDate'/>
+                  <TextField name='eventDescription'/>
+                  <SubmitField value='Submit'/>
+                  <ErrorsField/>
+                </Segment>
+              </AutoForm>
+            </Grid.Column>
+          </Grid>
     );
   }
 }
