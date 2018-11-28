@@ -58,7 +58,7 @@ class Map extends React.Component {
         </Segment>
         <Segment>
         <Container className="addClass">
-        <a href="/#/add">
+        <a href="/#/add-class">
         <Button primary className='addClassBut'>Add Classes</Button>
         </a>
         </Container>
