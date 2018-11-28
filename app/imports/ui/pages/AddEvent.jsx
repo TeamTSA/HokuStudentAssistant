@@ -6,6 +6,7 @@ import AutoForm from 'uniforms-semantic/AutoForm';
 import AutoField from 'uniforms-semantic/AutoField';
 import TextField from 'uniforms-semantic/TextField';
 import SubmitField from 'uniforms-semantic/SubmitField';
+import DateField from 'uniforms-semantic/DateField'
 import ErrorsField from 'uniforms-semantic/ErrorsField';
 import SimpleSchema from 'simpl-schema';
 
