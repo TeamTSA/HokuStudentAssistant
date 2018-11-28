@@ -12,6 +12,8 @@ const userSchema = new SimpleSchema({
   password: String,
   firstName: String,
   lastName: String,
+  courses: { type: Array }, // Array of course CRNs that the user is taking.
+  'courses.$': { type: Number } // Each course CRN has the type Number.
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */
