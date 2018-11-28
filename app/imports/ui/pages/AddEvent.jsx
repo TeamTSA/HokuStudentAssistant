@@ -42,7 +42,7 @@ class AddEvent extends Component {
 
   render() {
     // TODO: (Cammy) add acceptable location codes & event types to schema accepted values for location and event types
-    const { value } = this.state;
+    //const { value } = this.state;
     const formSchema = new SimpleSchema({
       eventName: String,
       eventType: String,
@@ -55,9 +55,9 @@ class AddEvent extends Component {
       },
     })
     return (
-        /*
+
         <Container text className='add-event-container'>
-        <AutoForm schema={formSchema}>
+        <AutoForm ref={(ref) => { this.formRef = ref; }} schema={formSchema} onSubmit={this.submit}>
           <Header as="h2" textAlign="center">Add Event</Header>
           <Form.Group widths='equal'>
             <AutoField name='eventName' label='Event Name' placeholder='Event Name' />
@@ -73,12 +73,13 @@ class AddEvent extends Component {
           <AutoField name='eventDescription' label='Description' placeholder='Description' />
           <Form.Field control={Button}>Submit</Form.Field>
         </AutoForm>
-        */
+        </Container>
 
+/*
           <Grid container centered>
             <Grid.Column>
               <Header as="h2" textAlign="center">Add Event</Header>
-              <AutoForm ref={(ref) => { this.formRef = ref; }} schema={EventsSchema} onSubmit={this.submit}>
+              <AutoForm ref={(ref) => { this.formRef = ref; }} schema={formSchema} onSubmit={this.submit}>
                 <Segment>
                   <TextField name='eventName'/>
                   <TextField name='eventType'/>
@@ -91,7 +92,7 @@ class AddEvent extends Component {
                 </Segment>
               </AutoForm>
             </Grid.Column>
-          </Grid>
+          </Grid>*/
     );
   }
 }
