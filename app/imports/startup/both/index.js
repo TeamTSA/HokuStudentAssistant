@@ -1,3 +1,9 @@
 import '/imports/api/stuff';
 import '/imports/api/machine';
 import '/imports/api/note';
+import '/imports/api/bathrooms';
+import '/imports/api/courses';
+import '/imports/api/events';
+import '/imports/api/food';
+import '/imports/api/locations';
+import '/imports/api/users';
