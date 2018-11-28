@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Segment, Header, Button, Form, Input, TextArea } from 'semantic-ui-react';
 import { Events, EventsSchema } from '/imports/api/events/events';
-import { Container, Header } from 'semantic-ui-react';
+import { Container, } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import AutoField from 'uniforms-semantic/AutoField';
 import TextField from 'uniforms-semantic/TextField';
