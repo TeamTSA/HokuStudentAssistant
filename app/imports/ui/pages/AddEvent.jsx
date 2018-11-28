@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Segment, Header, Button, Form, Input, TextArea } from 'semantic-ui-react';
 import { Events, EventsSchema } from '/imports/api/events/events';
-import { EventLocations } from '/imports/api/events/eventLocations';
 import { Container, } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import AutoField from 'uniforms-semantic/AutoField';
@@ -39,8 +38,7 @@ class AddEvent extends Component {
   submit(data) {
     // TODO: (Cammy) Make auto incrementing event ID
     const { eventName, eventType, eventLocation, eventStartDate, eventEndDate, eventDescription } = data;
-    Events.insert({ eventName, eventDescription, eventStartDate, eventEndDate, eventType }, this.insertCallback);
-    EventLocations.insert({event_id, eventLocation}, this.insertCallback)
+    Events.insert({ eventName, eventLocation, eventDescription, eventStartDate, eventEndDate, eventType }, this.insertCallback);
   }
 
   render() {
