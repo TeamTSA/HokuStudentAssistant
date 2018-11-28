@@ -5,16 +5,6 @@ import { Tracker } from 'meteor/tracker';
 //user ID
 //course CRN
 
-const userCourseSchema = new SimpleSchema({
-  user_id: Number,
-  courseCRN: Number,
-  courseCampus: Number,
-});
-
-export const UserCourses = new Mongo.Collection('userCourses');
-
-UserCourses.attachSchema(userCourseSchema);
-
 /** Create a Meteor collection. */
 const UserCourses = new Mongo.Collection('UserCourses');
 

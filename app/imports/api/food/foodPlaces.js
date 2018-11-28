@@ -2,13 +2,6 @@ import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
 
-const foodPlaceSchema = new SimpleSchema({
-  foodPlace_id: Number,
-  foodPlaceName: String,
-  foodPlaceDescription: String,
-  foodPlaceType: String,
-});
-
 /** Create a Meteor collection. */
 const FoodPlace = new Mongo.Collection('FoodPlace');
 
