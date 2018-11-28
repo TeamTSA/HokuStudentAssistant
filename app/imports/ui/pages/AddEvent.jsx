@@ -10,7 +10,7 @@ const options = [
   { key: 'f', text: 'Female', value: 'female' },
 ];
 
-class AddStuff extends Component {
+class AddEvent extends Component {
   state = {}
 
   handleChange = (e, { value }) => this.setState({ value })
@@ -52,4 +52,4 @@ class AddStuff extends Component {
   }
 }
 
-export default AddStuff;
+export default AddEvent;
