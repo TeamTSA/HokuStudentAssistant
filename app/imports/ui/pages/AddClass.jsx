@@ -11,6 +11,13 @@ import { Meteor } from 'meteor/meteor'
 
 class AddClass extends Component {
 
+  constructor(props) {
+    super(props);
+    this.submit = this.submit.bind(this);
+    this.insertCallback = this.insertCallback.bind(this);
+    this.formRef = null;
+  }
+
   /** Notify the user of the results of the submit. If successful, clear the form. */
   insertCallback(error) {
     if (error) {
