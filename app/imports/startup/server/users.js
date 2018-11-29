@@ -1,10 +1,10 @@
-import { UserCourses } from '/imports/api/users/userCourses';
+import { UserCourses } from '../../api/users/userCourses.js';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 
 /** Initialize the database with a default data document. */
 function addData(data) {
-  console.log(`  Adding: ${data.username} (${data.courses})`);
+  console.log(`  Adding: ${data.username} (${data.courseCRN})`);
   UserCourses.insert(data);
 }
 

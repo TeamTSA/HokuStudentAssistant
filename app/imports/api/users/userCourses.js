@@ -9,8 +9,8 @@ const UserCourses = new Mongo.Collection('UserCourses');
 /** Create a schema to constrain the structure of documents associated with this collection. */
 const userCourseSchema = new SimpleSchema({
   username: String,
-  courses: { type: Array }, // Array of course CRNs that the user is taking.
-  'courses.$': { type: Number } // Each course CRN has the type Number.
+  courseCRN: { type: Array }, // Array of course CRNs that the user is taking.
+  'courseCRN.$': { type: Number } // Each course CRN has the type Number.
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */

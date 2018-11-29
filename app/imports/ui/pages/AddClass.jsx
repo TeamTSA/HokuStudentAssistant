@@ -22,9 +22,9 @@ class AddClass extends Component {
   }
 
   submit(data) {
-    const {courses} = data;
-    const username = Meteor.user.username; //Meteor.users.findOne(this.userId).username;
-    UserCourses.insert({username, courses}, this.insertCallback);
+    const username = Meteor.user().username;
+    const { courseCRN } = data;
+    UserCourses.insert({username: username, courseCRN: courseCRN}, this.insertCallback);
   }
 
   render() {
