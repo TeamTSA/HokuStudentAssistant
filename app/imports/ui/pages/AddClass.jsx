@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Courses } from '/imports/api/courses/courses';
 import { CourseLocations } from '/imports/api/courses/courseLocations';
-import { UserProfiles } from '/imports/api/users/userProfiles';
+import { UserCourses } from '/imports/api/users/userCourses';
 import SimpleSchema from 'simpl-schema';
 import { Container, Header, Button, Form } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
@@ -22,7 +22,9 @@ class AddClass extends Component {
   }
 
   submit(data) {
-
+    const {courses} = data;
+    const username = Meteor.users.findOne(this.userId).username;
+    UserCourses.insert({username, courses}, this.insertCallback);
   }
 
   render() {
