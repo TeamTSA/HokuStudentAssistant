@@ -3,7 +3,7 @@ import { Courses } from '/imports/api/courses/courses';
 import { CourseLocations } from '/imports/api/courses/courseLocations';
 import { UserCourses } from '/imports/api/users/userCourses';
 import SimpleSchema from 'simpl-schema';
-import { Container, Header, Button, Form } from 'semantic-ui-react';
+import { Container, Header, Button, Form, Grid, Segment, Table } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import AutoField from 'uniforms-semantic/AutoField';
 import { Meteor } from 'meteor/meteor'
@@ -41,15 +41,36 @@ class AddClass extends Component {
     });
 
     return (
-        <Container text className='add-event-container'>
-          <AutoForm ref={(ref) => { this.formRef = ref; }} schema={formSchema} onSubmit={this.submit}>
-            <Header as="h2" textAlign="center">Add Class CRNs</Header>
-            <Form.Group widths='equal'>
-              <AutoField name='courseCRN' label='Class CRN' placeholder='CRN' />
-            </Form.Group>
-            <Form.Field control={Button}>Submit</Form.Field>
-          </AutoForm>
-        </Container>
+        <Grid columns={2}>
+          <Grid.Row>
+            <Grid.Column width={6}>
+              <Container text className='add-class-container'>
+                <AutoForm ref={(ref) => { this.formRef = ref; }} schema={formSchema} onSubmit={this.submit}>
+                  <Header as="h2" textAlign="center">Add Class CRNs</Header>
+                  <Form.Group widths='equal'>
+                    <AutoField name='courseCRN' label='Class CRN' placeholder='CRN' />
+                  </Form.Group>
+                  <Form.Field control={Button}>Submit</Form.Field>
+                </AutoForm>
+              </Container>
+            </Grid.Column>
+            <Grid.Column>
+              <Container text className='class-table-container'>
+                <Header as="h2" textAlign="center">Your Courses</Header>
+                <Table unstackable>
+                  <Table.Header>
+                    <Table.HeaderCell>CRN</Table.HeaderCell>
+                    <Table.HeaderCell>Course</Table.HeaderCell>
+                    <Table.HeaderCell>Description</Table.HeaderCell>
+                  </Table.Header>
+                  <Table.Body>
+                  </Table.Body>
+                </Table>
+              </Container>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+
     );
   }
 
