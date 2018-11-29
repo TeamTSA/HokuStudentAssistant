@@ -23,12 +23,11 @@ class AddClass extends Component {
 
   submit(data) {
     const {courses} = data;
-    const username = Meteor.users.findOne(this.userId).username;
+    const username = Meteor.user.username; //Meteor.users.findOne(this.userId).username;
     UserCourses.insert({username, courses}, this.insertCallback);
   }
 
   render() {
-
     const formSchema = new SimpleSchema({
       courseCRN: { type: Array },
       'courseCRN.$': { type: Number },
