@@ -10,6 +10,7 @@ import Landing from '../pages/Landing';
 import ListStuff from '../pages/ListStuff';
 import AddEvent from '../pages/AddEvent';
 import AddClass from '../pages/AddClass';
+import AddStuff from '../pages/AddStuff';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
@@ -19,6 +20,7 @@ import Map from '../pages/Map';
 import Info from '../pages/Info';
 import Preferences from '../pages/Preferences';
 import Admin from '../pages/Admin';
+import Test from '../pages/Test';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -31,11 +33,13 @@ class App extends React.Component {
               <Route exact path="/" component={Landing}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
-              <ProtectedRoute path="/map" component={Map}/>
+              <Route path="/test" component={Test}/>
               <ProtectedRoute path="/list" component={ListStuff}/>
+              <ProtectedRoute path="/map" component={Map}/>
               <ProtectedRoute path="/faq" component={Info}/>
               <ProtectedRoute path="/add" component={AddEvent}/>
               <ProtectedRoute path="/add-class" component={AddClass}/>
+              <ProtectedRoute path="/add" component={AddStuff}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
               <ProtectedRoute path="/preferences" component={Preferences}/>
               <AdminProtectedRoute path="/admin" component={Admin}/>

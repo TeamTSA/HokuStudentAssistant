@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { NavLink } from 'react-router-dom';
@@ -10,14 +10,21 @@ import { Machines } from '../../api/machine/machine';
 import AddWasher from '../components/AddWasher';
 import AvailabilityCount from '../components/AvailabilityCount';
 import Calendar from 'react-calendar';
+import GoogleMapReact from 'google-map-react';
 
-
-
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
 /** Renders a page with all the washing machines as a MachineCard */
-class Map extends React.Component {
+class Map extends Component {
   state = {
       date: new Date(),
-    }
+    };
+  static defaultProps = {
+    center: {
+      lat: 21.296972,
+      lng: -157.8230556,
+    },
+    zoom: 16,
+  };
 
     onChange = date => this.setState({ date });
 
@@ -31,9 +38,24 @@ class Map extends React.Component {
     return (
         <Grid columns={2} stackable>
         <Grid.Row>
+          <Grid.Column width={2}>
+          </Grid.Column>
         <Grid.Column width={6}>
         <Container>
         <Header as='h1' textAlign='center'>Map</Header>
+          <div style={{ height: '50vh', width: '100%' }}>
+            <GoogleMapReact
+                bootstrapURLKeys={{ key: 'AIzaSyDAAWx2DEvPtO50-cRMRkcCAwPe3WK7Onw\n' }}
+                defaultCenter={Map.defaultProps.center}
+                defaultZoom={Map.defaultProps.zoom}
+            >
+              <AnyReactComponent
+                  lat={59.955413}
+                  lng={30.337844}
+                  text={'Kreyser Avrora'}
+              />
+            </GoogleMapReact>
+          </div>
         </Container>
         </Grid.Column>
    <Grid.Column width={6} floated="right">
