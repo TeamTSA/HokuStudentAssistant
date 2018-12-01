@@ -29,6 +29,7 @@ class AddClass extends Component {
   }
 
   submit(data) {
+    // TODO: Search for existing document with same username first, if not exist, insert; if it does, get _id and update.
     const username = Meteor.user().username;
     const { courseCRN } = data;
     UserCourses.insert({username: username, courseCRN: courseCRN}, this.insertCallback);
