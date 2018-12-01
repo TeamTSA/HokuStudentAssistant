@@ -3,6 +3,8 @@ import { Link, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
 import { dormOptions } from '../../common/dorms';
+import { UserProfiles } from '/imports/api/users/userProfiles';
+import { Meteor } from 'meteor/meteor';
 
 /**
  * Signup component is similar to signin component, but we attempt to create a new user instead.
@@ -31,6 +33,10 @@ export default class Signup extends React.Component {
         this.setState({ error: err.reason });
       } else {
         // browserHistory.push('/login');
+        // insert user into userProfiles collection
+        if (UserProfiles.find({username: email}) == null) {
+          UserProfiles.insert({username: email, courses: []});
+        }
         this.setState({ createdAcc: true });
       }
     });

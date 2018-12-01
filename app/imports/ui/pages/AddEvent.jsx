@@ -36,7 +36,6 @@ class AddEvent extends Component {
 
   /** On submit, insert the data. */
   submit(data) {
-    // TODO: (Cammy) Make auto incrementing event ID
     const { eventName, eventType, eventLocation, eventStartDate, eventEndDate, eventDescription } = data;
     Events.insert({ eventName, eventLocation, eventDescription, eventStartDate, eventEndDate, eventType }, this.insertCallback);
   }
