@@ -7,7 +7,9 @@ import { Container, Header, Button, Form, Grid, Segment, Table } from 'semantic-
 import AutoForm from 'uniforms-semantic/AutoForm';
 import AutoField from 'uniforms-semantic/AutoField';
 import { Meteor } from 'meteor/meteor'
-
+import PropTypes from 'prop-types';
+import { withTracker } from 'meteor/react-meteor-data';
+import { withRouter, Link } from 'react-router-dom';
 
 class AddClass extends Component {
 
@@ -30,9 +32,20 @@ class AddClass extends Component {
 
   submit(data) {
     // TODO: Search for existing document with same username first, if not exist, insert; if it does, get _id and update.
-    const username = Meteor.user().username;
+    const username = Meteor.user().username.toString();
+    console.log(username.toString())
     const { courseCRN } = data;
-    UserCourses.insert({username: username, courseCRN: courseCRN}, this.insertCallback);
+    const record = UserCourses.findOne({username: username});
+    console.log(record);
+    if (record == null) {
+      console.log("inserted a new one");
+      UserCourses.insert({username: username, courseCRN: courseCRN}, this.insertCallback);
+    }
+    else {
+      const _id = record._id;
+      console.log("Updated");
+      UserCourses.update({_id: _id}, {$set: {courseCRN: courseCRN}});
+    }
   }
 
   render() {
@@ -77,4 +90,18 @@ class AddClass extends Component {
 
 }
 
-export default AddClass;
+/** Uniforms adds 'model' to the props, which we use. */
+AddClass.propTypes = {
+  doc: PropTypes.object,
+  model: PropTypes.object,
+  ready: PropTypes.bool.isRequired,
+};
+
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+export default withTracker(() => {
+  const userCourseSubscription = Meteor.subscribe('UserCourses');
+  return {
+    ready: userCourseSubscription.ready(),
+  };
+})(withRouter(AddClass));
+
