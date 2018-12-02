@@ -2,6 +2,64 @@
   "defaultAccounts": [
     { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
     { "email": "john@foo.com", "password": "changeme" }
-  ]
+  ],
+
+  "initialEntities": {
+    "enabled": true,
+    "courses": [
+      {
+        "courseCampus": "MAN", // MAN, KAP, MAU, KAU, WIN, WOA, HAW, HON, HIL, LEE
+        "courseCRN": 86367, // CRNs are not unique - different campuses can have same CRN.
+        "courseName": "ACC", // ex: ICS, ACC, MATH
+        "courseNumber": "201", // ex: 101, 414, 150C
+        "courseLocationCode": "CR", // building code; ex: POST, HOLM
+        "courseRoomNumber": "115", // ex: D204, 303
+        "courseScheduleMon": false,
+        "courseScheduleTue": true,
+        "courseScheduleWed": false,
+        "courseScheduleThur": true,
+        "courseScheduleFri": false,
+        "courseStartTime": 900, // no colons, ex: 1145, 0800
+        "courseScheduleEndTime": 1015,
+        "courseLattitude": 21.300287,
+        "courseLongitude": -157.81955
+      },
+      {
+        "courseCampus": "MAN", // MAN, KAP, MAU, KAU, WIN, WOA, HAW, HON, HIL, LEE
+        "courseCRN": 85848, // CRNs are not unique - different campuses can have same CRN.
+        "courseName": "AMST", // ex: ICS, ACC, MATH
+        "courseNumber": "150", // ex: 101, 414, 150C
+        "courseLocationCode": "MOORE", // building code; ex: POST, HOLM
+        "courseRoomNumber": "102", // ex: D204, 303
+        "courseScheduleMon": false,
+        "courseScheduleTue": false,
+        "courseScheduleWed": false,
+        "courseScheduleThur": false,
+        "courseScheduleFri": true,
+        "courseStartTime": 1230, // no colons, ex: 1145, 0800
+        "courseScheduleEndTime": 1320,
+        "courseLattitude": 21.301007,
+        "courseLongitude": -157.81507
+      },
+      {
+        "courseCampus": "MAN", // MAN, KAP, MAU, KAU, WIN, WOA, HAW, HON, HIL, LEE
+        "courseCRN": 82713, // CRNs are not unique - different campuses can have same CRN.
+        "courseName": "ART", // ex: ICS, ACC, MATH
+        "courseNumber": "242", // ex: 101, 414, 150C
+        "courseLocationCode": "ART", // building code; ex: POST, HOLM
+        "courseRoomNumber": "111", // ex: D204, 303
+        "courseScheduleMon": false,
+        "courseScheduleTue": true,
+        "courseScheduleWed": false,
+        "courseScheduleThur": true,
+        "courseScheduleFri": false,
+        "courseStartTime": 1500, // no colons, ex: 1145, 0800
+        "courseScheduleEndTime": 1745,
+        "courseLattitude": 21.969722,
+        "courseLongitude": -159.39608
+      }
+    ]
+
+  }
 
 }
