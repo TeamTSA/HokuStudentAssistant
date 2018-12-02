@@ -10,7 +10,7 @@ import { Machines } from '../../api/machine/machine';
 import AddWasher from '../components/AddWasher';
 import AvailabilityCount from '../components/AvailabilityCount';
 import Calendar from 'react-calendar';
-import GoogleMapReact from 'google-map-react';
+import GoogleMapReact, { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-map-react';
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 /** Renders a page with all the washing machines as a MachineCard */
@@ -48,9 +48,9 @@ class Map extends Component {
                 defaultZoom={Map.defaultProps.zoom}
             >
               <AnyReactComponent
-                  lat={59.955413}
-                  lng={30.337844}
-                  text={'Kreyser Avrora'}
+                  lat={21.296972}
+                  lng={-157.8230556}
+                  text={'uh  manoa'}
               />
             </GoogleMapReact>
           </div>
