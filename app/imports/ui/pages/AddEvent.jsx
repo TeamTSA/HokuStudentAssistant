@@ -9,6 +9,9 @@ import SubmitField from 'uniforms-semantic/SubmitField';
 import DateField from 'uniforms-semantic/DateField'
 import ErrorsField from 'uniforms-semantic/ErrorsField';
 import SimpleSchema from 'simpl-schema';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { withTracker } from 'meteor/react-meteor-data';
 
 const options = [
   { key: 'm', text: 'Male', value: 'male' },
@@ -97,4 +100,18 @@ class AddEvent extends Component {
   }
 }
 
-export default AddEvent;
+/** Uniforms adds 'model' to the props, which we use. */
+AddEvent.propTypes = {
+  doc: PropTypes.object,
+  model: PropTypes.object,
+  ready: PropTypes.bool.isRequired,
+};
+
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+export default withTracker(() => {
+  const eventsSubscription = Meteor.subscribe('Events');
+  return {
+    ready: eventsSubscription.ready(),
+  };
+})(withRouter(AddEvent));
+

@@ -6,7 +6,12 @@ import { Container, Card, Header, Loader, Message, Grid, Segment, Checkbox, Butt
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import MachineCard from '/imports/ui/components/MachineCard';
-import { Machines } from '../../api/machine/machine';
+import { UserCourses } from '../../api/users/userCourses';
+import { Courses } from '../../api/courses/courses';
+import { Locations } from '../../api/locations/locations.js';
+import { Events } from '../../api/events/events';
+import { Bathrooms } from '../../api/bathrooms/bathrooms.js';
+import { FoodPlace } from '../../api/food/foodPlaces.js';
 import AddWasher from '../components/AddWasher';
 import AvailabilityCount from '../components/AvailabilityCount';
 import Calendar from 'react-calendar';
@@ -25,6 +30,10 @@ class Map extends Component {
     },
     zoom: 16,
   };
+
+  constructor(props) {
+    super(props);
+  }
 
     onChange = date => this.setState({ date });
 
@@ -91,13 +100,36 @@ class Map extends Component {
   }
 }
 
+Map.propTypes = {
+  doc: PropTypes.object,
+  model: PropTypes.object,
+  ready: PropTypes.bool.isRequired,
+};
+
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Get access to Machine documents.
-  const subscription = Meteor.subscribe('Machine');
+  const subscription1 = Meteor.subscribe('UserCourses');
+  const subscription2 = Meteor.subscribe('Courses');
+  const locationSubscription = Meteor.subscribe('Locations');
+  const eventSubscription = Meteor.subscribe('Events');
+  const bathroomSubscriptipn = Meteor.subscribe('Bathrooms');
+  const foodSubscription = Meteor.subscribe('FoodPlace');
+
   return {
-    machines: Machines.find({}).fetch(),
-    ready: subscription.ready(),
+    userCourses: UserCourses.find({}).fetch(),
+    courses: Courses.find({}).fetch(),
+    events: Events.find({}).fetch(),
+    locations: Locations.find({}).fetch(),
+    bathrooms: Bathrooms.find({}).fetch(),
+    foodPlaces: FoodPlace.find({}).fetch(),
+    ready: (subscription1.ready() &&
+            subscription2.ready() &&
+            locationSubscription.ready() &&
+            eventSubscription.ready() &&
+            bathroomSubscriptipn.ready() &&
+            foodSubscription.ready()
+      ),
   };
 })(Map);
