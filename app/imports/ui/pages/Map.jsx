@@ -105,7 +105,7 @@ export default withTracker(() => {
   // Get access to Machine documents.
   const subscription1 = Meteor.subscribe('UserCourses');
   const subscription2 = Meteor.subscribe('Courses');
-  const locationSubscription = Meteor.subscribe('Locations');
+  //const locationSubscription = Meteor.subscribe('Locations');
   const eventSubscription = Meteor.subscribe('Events');
   const bathroomSubscriptipn = Meteor.subscribe('Bathrooms');
   const foodSubscription = Meteor.subscribe('FoodPlace');
@@ -119,7 +119,7 @@ export default withTracker(() => {
     foodPlaces: FoodPlace.find({}).fetch(),
     ready: (subscription1.ready() &&
             subscription2.ready() &&
-            locationSubscription.read() &&
+            //locationSubscription.ready() &&
             eventSubscription.ready() &&
             bathroomSubscriptipn.ready() &&
             foodSubscription.ready()
