@@ -1,4 +1,4 @@
-import { Courses } from '../../api/users/courses.js';
+import { Courses } from '../../api/courses/courses.js';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 
