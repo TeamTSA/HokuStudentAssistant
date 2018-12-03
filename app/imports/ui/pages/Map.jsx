@@ -47,12 +47,10 @@ class Map extends Component {
     return (
         <Grid columns={2} stackable>
         <Grid.Row>
-          <Grid.Column width={2}>
-          </Grid.Column>
-        <Grid.Column width={6}>
+       <Grid.Column width={10}>
         <Container>
         <Header as='h1' textAlign='center'>Map</Header>
-          <div style={{ height: '50vh', width: '100%' }}>
+          <div style={{ height: '60vh', width: '100%' }}>
             <GoogleMapReact
                 bootstrapURLKeys={{ key: 'AIzaSyDAAWx2DEvPtO50-cRMRkcCAwPe3WK7Onw\n' }}
                 defaultCenter={Map.defaultProps.center}
