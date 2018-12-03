@@ -17,7 +17,7 @@ if (FoodPlace.find().count() === 0) {
 }
 
 /** This subscription publishes only the documents associated with the logged in user */
-Meteor.publish('Events', function publish() {
+Meteor.publish('FoodPlace', function publish() {
   if (this.userId) {
     return FoodPlace.find();
   }
@@ -25,7 +25,7 @@ Meteor.publish('Events', function publish() {
 });
 
 /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-Meteor.publish('EventsAdmin', function publish() {
+Meteor.publish('FoodPlaceAdmin', function publish() {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return FoodPlace.find();
   }
