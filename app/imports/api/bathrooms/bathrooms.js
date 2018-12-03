@@ -14,7 +14,8 @@ const Bathrooms = new Mongo.Collection('Bathrooms');
 const bathroomSchema = new SimpleSchema({
   gender: String, //men or womens
   name: String, // name of bathroom (ex. Keller Hall 1st floor)
-  location: String,
+  location_x: Number,
+  location_y: Number,
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */

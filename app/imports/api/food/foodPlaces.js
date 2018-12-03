@@ -10,7 +10,8 @@ const foodPlaceSchema = new SimpleSchema({
   foodPlaceName: String,
   foodPlaceDescription: String,
   foodPlaceType: String,
-  foodPlaceLocation: String,
+  location_x: Number,
+  location_y: Number,
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */
