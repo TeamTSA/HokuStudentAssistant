@@ -6,7 +6,8 @@ import { Container, Card, Header, Loader, Message, Grid, Segment, Checkbox, Butt
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import MachineCard from '/imports/ui/components/MachineCard';
-import { Machines } from '../../api/machine/machine';
+import { UserCourses } from '../../api/users/userCourses';
+import { Courses } from '../../api/courses/courses';
 import AddWasher from '../components/AddWasher';
 import AvailabilityCount from '../components/AvailabilityCount';
 import Calendar from 'react-calendar';
@@ -97,9 +98,11 @@ class Map extends Component {
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Get access to Machine documents.
-  const subscription = Meteor.subscribe('Machine');
+  const subscription1 = Meteor.subscribe('UserCourses');
+  const subscription2 = Meteor.subscribe('Courses');
   return {
-    machines: Machines.find({}).fetch(),
-    ready: subscription.ready(),
+    userCourses: UserCourses.find({}).fetch(),
+    courses: Courses.find({}).fetch(),
+    ready: (subscription1.ready() && subscription2.ready())
   };
 })(Map);
