@@ -32,6 +32,10 @@ class Map extends Component {
     zoom: 16,
   };
 
+  constructor(props) {
+    super(props);
+  }
+
     onChange = date => this.setState({ date });
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -98,6 +102,12 @@ class Map extends Component {
     );
   }
 }
+
+Map.propTypes = {
+  doc: PropTypes.object,
+  model: PropTypes.object,
+  ready: PropTypes.bool.isRequired,
+};
 
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
