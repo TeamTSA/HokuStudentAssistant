@@ -5,12 +5,17 @@ import { NavLink } from 'react-router-dom';
 import { Container, Card, Header, Loader, Message, Grid, Segment, Checkbox, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import MachineCard from '/imports/ui/components/MachineCard';
 import { Machines } from '../../api/machine/machine';
-import AddWasher from '../components/AddWasher';
-import AvailabilityCount from '../components/AvailabilityCount';
 import Calendar from 'react-calendar';
-import GoogleMapReact, { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-map-react';
+import GoogleMapReact, { GoogleApiWrapper, InfoWindow, Marker } from 'google-map-react';
+import AddClass from './AddClass';
+import userCourses, { UserCourses } from '../../api/users/userCourses';
+
+// figure out how to get username
+const uname = AddClass.username;
+console.log(uname);
+
+
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 /** Renders a page with all the washing machines as a MachineCard */
