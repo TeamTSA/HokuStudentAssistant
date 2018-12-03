@@ -4,7 +4,7 @@ import { Roles } from 'meteor/alanning:roles';
 
 /** Initialize the database with a default data document. */
 function addData(data) {
-  console.log(`  Adding: ${data.username} (${data.courseCRN})`);
+  //console.log(`  Adding: ${data.username} (${data.courseCRN})`);
   Locations.insert(data);
 }
 

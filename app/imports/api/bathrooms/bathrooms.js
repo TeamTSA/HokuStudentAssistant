@@ -12,9 +12,9 @@ const Bathrooms = new Mongo.Collection('Bathrooms');
 
 /** Create a schema to constrain the structure of documents associated with this collection. */
 const bathroomSchema = new SimpleSchema({
-  bathroom_id: Number,
   gender: String, //men or womens
   name: String, // name of bathroom (ex. Keller Hall 1st floor)
+  location: String,
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */
