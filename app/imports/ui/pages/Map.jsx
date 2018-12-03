@@ -8,6 +8,11 @@ import PropTypes from 'prop-types';
 import MachineCard from '/imports/ui/components/MachineCard';
 import { UserCourses } from '../../api/users/userCourses';
 import { Courses } from '../../api/courses/courses';
+import { Locations } from '/../../api/locations/locations';
+import { Events } from '/../../api/events/events'
+import { Bathrooms } from '/../../api/bathrooms/bathrooms';
+import { FoodPlace } from '/../../api/food/foodPlaces';
+
 import AddWasher from '../components/AddWasher';
 import AvailabilityCount from '../components/AvailabilityCount';
 import Calendar from 'react-calendar';
@@ -100,9 +105,24 @@ export default withTracker(() => {
   // Get access to Machine documents.
   const subscription1 = Meteor.subscribe('UserCourses');
   const subscription2 = Meteor.subscribe('Courses');
+  const locationSubscription = Meteor.subscribe('Locations');
+  const eventSubscription = Meteor.subscribe('Events');
+  const bathroomSubscriptipn = Meteor.subscribe('Bathrooms');
+  const foodSubscription = Meteor.subscribe('FoodPlace');
+
   return {
     userCourses: UserCourses.find({}).fetch(),
     courses: Courses.find({}).fetch(),
-    ready: (subscription1.ready() && subscription2.ready())
+    events: Events.find({}).fetch(),
+    locations: Locations.find({}).fetch(),
+    bathrooms: Bathrooms.find({}).fetch(),
+    foodPlaces: FoodPlace.find({}).fetch(),
+    ready: (subscription1.ready() &&
+            subscription2.ready() &&
+            locationSubscription.read() &&
+            eventSubscription.ready() &&
+            bathroomSubscriptipn.ready() &&
+            foodSubscription.ready()
+      ),
   };
 })(Map);
