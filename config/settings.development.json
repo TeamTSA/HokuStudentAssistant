@@ -2,6 +2,61 @@
   "defaultAccounts": [
     { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
     { "email": "john@foo.com", "password": "changeme" }
-  ]
+  ],
 
+  "initialEntities": {
+    "enabled": true,
+    "Courses": [
+      {
+        "courseCampus": "MAN",
+        "courseCRN": 86367,
+        "courseName": "ACC",
+        "courseNumber": "201",
+        "courseLocationCode": "CR",
+        "courseRoomNumber": "115",
+        "courseScheduleMon": false,
+        "courseScheduleTue": true,
+        "courseScheduleWed": false,
+        "courseScheduleThur": true,
+        "courseScheduleFri": false,
+        "courseStartTime": 900,
+        "courseScheduleEndTime": 1015,
+        "courseLattitude": 21.300287,
+        "courseLongitude": -157.81955
+      },
+      {
+        "courseCampus": "MAN",
+        "courseCRN": 85848,
+        "courseName": "AMST",
+        "courseNumber": "150",
+        "courseLocationCode": "MOORE",
+        "courseRoomNumber": "102",
+        "courseScheduleMon": false,
+        "courseScheduleTue": false,
+        "courseScheduleWed": false,
+        "courseScheduleThur": false,
+        "courseScheduleFri": true,
+        "courseStartTime": 1230,
+        "courseScheduleEndTime": 1320,
+        "courseLattitude": 21.301007,
+        "courseLongitude": -157.81507
+      },
+      {
+        "courseCampus": "MAN",
+        "courseName": "ART",
+        "courseNumber": "242",
+        "courseLocationCode": "ART",
+        "courseRoomNumber": "111",
+        "courseScheduleMon": false,
+        "courseScheduleTue": true,
+        "courseScheduleWed": false,
+        "courseScheduleThur": true,
+        "courseScheduleFri": false,
+        "courseStartTime": 1500,
+        "courseScheduleEndTime": 1745,
+        "courseLattitude": 21.969722,
+        "courseLongitude": -159.39608
+      }
+    ]
+  }
 }

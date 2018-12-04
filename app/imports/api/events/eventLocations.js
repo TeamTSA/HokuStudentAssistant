@@ -4,7 +4,7 @@ import { Tracker } from 'meteor/tracker';
 
 
 /** Create a Meteor collection. */
-const eventsLocation = new Mongo.Collection('eventsLocation');
+const eventLocations = new Mongo.Collection('eventLocations');
 
 /** Create a schema to constrain the structure of documents associated with this collection. */
 const eventLocationSchema = new SimpleSchema({
@@ -13,7 +13,7 @@ const eventLocationSchema = new SimpleSchema({
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */
-eventsLocation.attachSchema(eventLocationSchema);
+eventLocations.attachSchema(eventLocationSchema);
 
 /** Make the collection and schema available to other code. */
-export { eventsLocation, eventLocationSchema };
+export { eventLocations, eventLocationSchema };

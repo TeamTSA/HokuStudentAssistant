@@ -21,6 +21,8 @@ const courseSchema = new SimpleSchema({
   courseScheduleFri: Boolean,
   courseStartTime: Number, // no colons, ex: 1145, 0800
   courseScheduleEndTime: Number,
+  courseLattitude: Number,
+  courseLongitude: Number,
 }, { tracker: Tracker });
 
 /** Attach this schema to collection. */
