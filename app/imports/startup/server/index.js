@@ -8,4 +8,5 @@ import './courses.js';
 import './bathrooms.js';
 import './foodPlaces.js';
 import './locations.js';
+import './initial-entities.js';
 
