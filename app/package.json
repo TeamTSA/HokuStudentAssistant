@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.39",
+    "assets": "^3.0.0",
     "classnames": "^2.2.5",
     "google-map-react": "^1.1.1",
     "meteor-node-stubs": "~0.3.2",
