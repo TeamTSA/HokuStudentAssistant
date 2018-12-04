@@ -12,9 +12,13 @@ import { FoodPlace } from '../../api/food/foodPlaces';
  */
 function initEntity(name, collection) {
   const definitions = Meteor.settings.initialEntities[name] || [];
-  console.log(`Initializing ${definitions.length} ${name}`);
-  definitions.map(definition => collection.define(definition));
+  if (collection.find().count() === 0) {
+    console.log(`Initializing ${definitions.length} ${name}`);
+    definitions.map(definition => collection.insert(definition));
+  }
 }
+
+//here is an edit to restat server
 
 /**
  * Define entities at system startup.  Locations must be defined first
