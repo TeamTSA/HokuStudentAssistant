@@ -14,15 +14,13 @@ const courseSchema = new SimpleSchema({
   courseNumber: String, // ex: 101, 414, 150C
   courseLocationCode: String, // building code; ex: POST, HOLM
   courseRoomNumber: String, // ex: D204, 303
-  courseScheduleMon: Boolean,
-  courseScheduleTue: Boolean,
-  courseScheduleWed: Boolean,
-  courseScheduleThur: Boolean,
-  courseScheduleFri: Boolean,
-  courseStartTime: Number, // no colons, ex: 1145, 0800
-  courseScheduleEndTime: Number,
-  courseLattitude: Number,
-  courseLongitude: Number,
+  courseScheduleMon: String,
+  courseScheduleTue: String,
+  courseScheduleWed: String,
+  courseScheduleThur: String,
+  courseScheduleFri: String,
+  courseStartTime: String, // no colons, ex: 1145, 0800
+  courseScheduleEndTime: String,
 }, { tracker: Tracker });
 
 /** Attach this schema to collection. */

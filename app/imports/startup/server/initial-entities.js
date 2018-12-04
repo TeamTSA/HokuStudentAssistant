@@ -3,31 +3,48 @@ import { Courses } from '../../api/courses/courses';
 import { Locations } from '../../api/locations/locations';
 import { Bathrooms } from '../../api/bathrooms/bathrooms';
 import { FoodPlace } from '../../api/food/foodPlaces';
+import { _ } from 'meteor/underscore';
 
 
 /**
- * Generic function used to load definitions from the settings.*.json file.
- * @param name The field in the settings file containing the entity definitions.
- * @param collection The collection whose define method will be called on each definition.
+ * Returns the definition array associated with collectionName in the restoreJSON structure.
+ * @param restoreJSON The restore file contents.
+ * @param collection The collection of interest.
  */
-function initEntity(name, collection) {
-  const definitions = Meteor.settings.initialEntities[name] || [];
-  if (collection.find().count() === 0) {
-    console.log(`Initializing ${definitions.length} ${name}`);
-    definitions.map(definition => collection.insert(definition));
-  }
+function getDefinitions(restoreJSON, collection) {
+  return _.find(restoreJSON.collections, obj => obj.name === collection).contents;
 }
 
-//here is an edit to restat server
-
 /**
- * Define entities at system startup.  Locations must be defined first
+ * Given a collection and the restoreJSON structure, looks up the definitions and invokes define() on them.
+ * @param collection The collection to be restored.
+ * @param restoreJSON The structure containing all of the definitions.
  */
+function restoreCollection(collection, restoreJSON) {
+  console.log(`the collection name is ${collection._name}`);
+  const definitions = getDefinitions(restoreJSON, collection._name);
+  console.log(`Defining ${definitions.length} ${collection._name} documents.`);
+  _.each(definitions, definition => collection.insert(definition));
+}
+
 Meteor.startup(() => {
-  if (Meteor.settings.initialEntities && Meteor.settings.initialEntities.enabled) {
-    //initEntity('Locations', Locations);
-    initEntity('Courses', Courses);
-    //initEntity('Bathrooms', Bathrooms);
-    //initEntity('FoodPlaces', FoodPlace)
-  }
+  /** Only initialize database if it's empty. */
+  const collectionList = [Locations, Courses];
+  /*const totalDocuments = _.reduce(collectionList, function reducer(memo, collection) {
+    return memo + collection.count();
+  }, 0);
+  */
+  const fileName = Meteor.settings.public.initialDatabaseFileName;
+  console.log(`Restoring database from file ${fileName}.`);
+  //const jsontext = Assets.getText(fileName);
+  //console.log(`Json text is ${jsontext}`);
+  const restoreJSON = JSON.parse(Assets.getText(fileName));
+  console.log(`successful parse`);
+  _.each(collectionList, collection => {
+    if (collection.find().count() === 0) {
+      restoreCollection(collection, restoreJSON);
+    }
+  });
 });
+
+//restrat serer
