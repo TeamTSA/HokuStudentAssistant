@@ -44,7 +44,7 @@ class AddClass extends Component {
     else {
       const _id = record._id;
       console.log("Updated");
-      UserCourses.update({_id: _id}, {$set: {courseCRN: courseCRN}});
+      UserCourses.update({_id: _id}, {$addToSet: { courseCRN: courseCRN }});
     }
   }
 

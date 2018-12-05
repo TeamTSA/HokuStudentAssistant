@@ -3,6 +3,9 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { NavLink } from 'react-router-dom';
 import { Container, Card, Header, Loader, Message, Grid, Segment, Checkbox, Button } from 'semantic-ui-react';
+import Calendar from 'react-calendar';
+import GoogleMapReact, { GoogleApiWrapper, InfoWindow } from 'google-map-react';
+import { Marker } from 'google-maps-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import MachineCard from '/imports/ui/components/MachineCard';
@@ -12,16 +15,14 @@ import { Locations } from '../../api/locations/locations.js';
 import { Events } from '../../api/events/events';
 import { Bathrooms } from '../../api/bathrooms/bathrooms.js';
 import { FoodPlace } from '../../api/food/foodPlaces.js';
-import AddWasher from '../components/AddWasher';
 import AvailabilityCount from '../components/AvailabilityCount';
-import Calendar from 'react-calendar';
-import GoogleMapReact, { GoogleApiWrapper, InfoWindow, Marker } from 'google-map-react';
-import AddClass from './AddClass';
 
-// figure out how to get username
+const loc = Locations.find();
+const ucourses = UserCourses.find();
+console.log(ucourses);
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
-/** Renders a page with all the washing machines as a MachineCard */
+
 class Map extends Component {
   state = {
       date: new Date(),
@@ -37,7 +38,23 @@ class Map extends Component {
   constructor(props) {
     super(props);
   }
+/*
+{stuff.map(function (stuf) {
+              return (<AnyReactComponent key={stuf.locationCode}>
+                lat = {stuf.location_x}
+                lng={stuf.location_y}
+                text={stuf.locationName}
+                />);
+            })}
+       <GoogleMaps
+                apiKey={ 'AIzaSyBrU0R8n2gfMK3jYkI9MwjwJ513SOcF9io' }
+                style={{ height: '100%', width: '100%' }}
+                zoom={16}
+                center={{ lat: 21.296972, lng: -157.8230556 }}
 
+                markers={ locations }
+            />
+ */
     onChange = date => this.setState({ date });
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -55,16 +72,25 @@ class Map extends Component {
         <Header as='h1' textAlign='center'>Map</Header>
           <div style={{ height: '60vh', width: '100%' }}>
             <GoogleMapReact
-                bootstrapURLKeys={{ key: 'AIzaSyDAAWx2DEvPtO50-cRMRkcCAwPe3WK7Onw\n' }}
+                bootstrapURLKeys={{ key: 'AIzaSyBrU0R8n2gfMK3jYkI9MwjwJ513SOcF9io' }}
                 defaultCenter={Map.defaultProps.center}
                 defaultZoom={Map.defaultProps.zoom}
             >
+              {loc.map(function (stuf) {
+                return (<AnyReactComponent key={stuf.locationCode}
+                  lat = {stuf.location_x}
+                  lng={stuf.location_y}
+                  text={stuf.locationName}
+                  />);
+                  })}
               <AnyReactComponent
                   lat={21.296972}
                   lng={-157.8230556}
-                  text={'uh  manoa'}
+                  text={'uh manoa'}
               />
+
             </GoogleMapReact>
+
           </div>
         </Container>
         </Grid.Column>
