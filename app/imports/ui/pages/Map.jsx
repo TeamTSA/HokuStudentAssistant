@@ -16,6 +16,7 @@ import { Events } from '../../api/events/events';
 import { Bathrooms } from '../../api/bathrooms/bathrooms.js';
 import { FoodPlace } from '../../api/food/foodPlaces.js';
 import AvailabilityCount from '../components/AvailabilityCount';
+import {DayPilot, DayPilotScheduler} from "daypilot-pro-react";
 
 const loc = Locations.find();
 const ucourses = UserCourses.find();
@@ -140,6 +141,32 @@ class Map extends Component {
             onChange={this.onChange}
             value={this.state.date}
           />
+          <Header as='h5' textAlign='center'>(Drag and drop your courses around the scheduler)</Header>
+          <DayPilotScheduler
+                startDate = {DayPilot.Date.today().firstDayOfMonth()}
+                days = {DayPilot.Date.today().daysInMonth()}
+                scale = {"Day"}
+                timeHeaders = {[
+                    { groupBy: "Month"},
+                    { groupBy: "Day", format: "d"}
+                ]}
+                resources = {[
+                    {name: "Monday", id: "A", text: "Class 1", start: "2018-05-02T06:50:00", end: "2018-05-09T06:55:00", resource: "A"},
+                    {name: "Tuesday", id: "B", text: "Class 2", start: "2018-05-03T00:00:00", end: "2018-05-10T00:00:00", resource: "B", barColor: "#38761d", barBackColor: "#93c47d" },
+                    {name: "Wednesday", id: "C", text: "Class 3", start: "2018-05-02T00:00:00", end: "2018-05-08T00:00:00", resource: "C", barColor: "#f1c232", barBackColor: "#f1c232" },
+                    {name: "Thursday", id: "D", text: "Class 4", start: "2018-05-02T00:00:00", end: "2018-05-08T00:00:00", resource: "E", barColor: "#cc0000", barBackColor: "#ea9999" },
+                    {name: "Friday", id: "E", text: "Class 5", start: "2018-05-02T00:00:00", end: "2018-05-08T00:00:00", resource: "F", barColor: "#cc0000", barBackColor: "#ea9992"}
+
+                ]}
+                events = {[
+                  {id: "A", text: "Class 1", start: "2018-05-02T06:50:00", end: "2018-05-09T06:55:00", resource: "A"},
+                  {id: "B", text: "Class 2", start: "2018-05-03T00:00:00", end: "2018-05-10T00:00:00", resource: "B", barColor: "#38761d", barBackColor: "#93c47d" },
+                  {id: "C", text: "Class 3", start: "2018-05-02T00:00:00", end: "2018-05-08T00:00:00", resource: "C", barColor: "#f1c232", barBackColor: "#f1c232" },
+                  {id: "D", text: "Class 4", start: "2018-05-02T00:00:00", end: "2018-05-08T00:00:00", resource: "D", barColor: "#cc0000", barBackColor: "#ea9999" },
+                  {id: "E", text: "Class 5", start: "2018-05-02T00:00:00", end: "2018-05-08T00:00:00", resource: "E", barColor: "#cc0000", barBackColor: "#ea9992" }
+                ]}
+            />
+
         </Container>
         </Segment>
         <Segment>
