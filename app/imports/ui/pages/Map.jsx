@@ -19,7 +19,12 @@ import AvailabilityCount from '../components/AvailabilityCount';
 
 const loc = Locations.find();
 const ucourses = UserCourses.find();
-console.log(ucourses);
+
+let arr = [];
+ucourses.map(function (course) {
+  console.log(course[0]);
+});
+//console.log(ucourses);
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
@@ -54,6 +59,14 @@ class Map extends Component {
 
                 markers={ locations }
             />
+
+            {loc.map(function (stuf) {
+                return (<AnyReactComponent key={stuf.locationCode}
+                  lat = {stuf.location_x}
+                  lng={stuf.location_y}
+                  text={stuf.locationName}
+                  />);
+                  })}
  */
     onChange = date => this.setState({ date });
 
@@ -76,17 +89,21 @@ class Map extends Component {
                 defaultCenter={Map.defaultProps.center}
                 defaultZoom={Map.defaultProps.zoom}
             >
-              {loc.map(function (stuf) {
-                return (<AnyReactComponent key={stuf.locationCode}
-                  lat = {stuf.location_x}
-                  lng={stuf.location_y}
-                  text={stuf.locationName}
-                  />);
-                  })}
+
               <AnyReactComponent
-                  lat={21.296972}
-                  lng={-157.8230556}
-                  text={'uh manoa'}
+                  lat={21.301381}
+                  lng={-157.82038}
+                  text={'ACC 418'}
+              />
+              <AnyReactComponent
+                  lat={21.299754}
+                  lng={-157.82062}
+                  text={'ARCH 690'}
+              />
+              <AnyReactComponent
+                  lat={21.299224}
+                  lng={-157.81738}
+                  text={'ART 101'}
               />
 
             </GoogleMapReact>
