@@ -19,12 +19,11 @@ import AvailabilityCount from '../components/AvailabilityCount';
 
 const loc = Locations.find();
 const ucourses = UserCourses.find();
-
-let arr = [];
-ucourses.map(function (course) {
-  console.log(course[0]);
+const arr = UserCourses.findOne();
+loc.map(function (elem) {
+  console.log(elem.locationCode);
 });
-//console.log(ucourses);
+
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
@@ -59,14 +58,16 @@ class Map extends Component {
 
                 markers={ locations }
             />
+{Bathrooms.find().map(function (elem) {
+                return Locations.find({ locationCode: elem.locationCode }).map(function (e) {
+                  return <AnyReactComponent
+                      lat = {e.location_x}
+                      lng = {e.location_y}
+                      text= {'B'}/>;
+                  });
+                })
+              }
 
-            {loc.map(function (stuf) {
-                return (<AnyReactComponent key={stuf.locationCode}
-                  lat = {stuf.location_x}
-                  lng={stuf.location_y}
-                  text={stuf.locationName}
-                  />);
-                  })}
  */
     onChange = date => this.setState({ date });
 
@@ -82,6 +83,7 @@ class Map extends Component {
         <Grid.Row>
        <Grid.Column width={10}>
         <Container>
+
         <Header as='h1' textAlign='center'>Map</Header>
           <div style={{ height: '60vh', width: '100%' }}>
             <GoogleMapReact
@@ -90,22 +92,47 @@ class Map extends Component {
                 defaultZoom={Map.defaultProps.zoom}
             >
 
-              <AnyReactComponent
-                  lat={21.301381}
-                  lng={-157.82038}
-                  text={'ACC 418'}
-              />
-              <AnyReactComponent
-                  lat={21.299754}
-                  lng={-157.82062}
-                  text={'ARCH 690'}
-              />
-              <AnyReactComponent
-                  lat={21.299224}
-                  lng={-157.81738}
-                  text={'ART 101'}
-              />
+              {ucourses.map(function(elem){
+                return elem.courseCRN.map(function(e){
+                  return Courses.find({courseCRN: e}).map(function(elem2){
+                    return Locations.find({ locationCode: elem2.courseLocationCode }).map(function(e2){
+                      return <AnyReactComponent
+                          class='ucourse'
+                          lat = {e2.location_x}
+                          lng = {e2.location_y}
+                          text= {elem2.courseName + ' ' + elem2.courseNumber}/>;
+                    });
+                  });
+                });
+              })}
 
+              {Bathrooms.find().map(function (elem) {
+                return Locations.find({ locationCode: elem.locationCode }).map(function (e) {
+                  return <AnyReactComponent
+                      lat = {e.location_x}
+                      lng = {e.location_y}
+                      text= {'B'}/>;
+                });
+              })
+              }
+              {FoodPlace.find().map(function (elem) {
+                return Locations.find({ locationCode: elem.locationCode }).map(function (e) {
+                  return <AnyReactComponent
+                      lat = {e.location_x}
+                      lng = {e.location_y}
+                      text= {'B'}/>;
+                });
+              })
+              }
+              {Events.find().map(function (elem) {
+                return Locations.find({ locationCode: elem.locationCode }).map(function (e) {
+                  return <AnyReactComponent
+                      lat = {e.location_x}
+                      lng = {e.location_y}
+                      text= {'B'}/>;
+                });
+              })
+              }
             </GoogleMapReact>
 
           </div>
