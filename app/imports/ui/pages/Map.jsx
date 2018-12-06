@@ -41,34 +41,15 @@ class Map extends Component {
 
   constructor(props) {
     super(props);
+    this.state = { checked: false};
+    this.handleChange = this.handleChange.bind(this)
   }
-/*
-{stuff.map(function (stuf) {
-              return (<AnyReactComponent key={stuf.locationCode}>
-                lat = {stuf.location_x}
-                lng={stuf.location_y}
-                text={stuf.locationName}
-                />);
-            })}
-       <GoogleMaps
-                apiKey={ 'AIzaSyBrU0R8n2gfMK3jYkI9MwjwJ513SOcF9io' }
-                style={{ height: '100%', width: '100%' }}
-                zoom={16}
-                center={{ lat: 21.296972, lng: -157.8230556 }}
+  handleChange() {
+    this.setState({
+      checked: !this.state.checked
+    })
+  }
 
-                markers={ locations }
-            />
-{Bathrooms.find().map(function (elem) {
-                return Locations.find({ locationCode: elem.locationCode }).map(function (e) {
-                  return <AnyReactComponent
-                      lat = {e.location_x}
-                      lng = {e.location_y}
-                      text= {'B'}/>;
-                  });
-                })
-              }
-
- */
     onChange = date => this.setState({ date });
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -109,6 +90,7 @@ class Map extends Component {
               {Bathrooms.find().map(function (elem) {
                 return Locations.find({ locationCode: elem.locationCode }).map(function (e) {
                   return <AnyReactComponent
+                      class = 'bathroom'
                       lat = {e.location_x}
                       lng = {e.location_y}
                       text= {'B'}/>;
@@ -118,6 +100,7 @@ class Map extends Component {
               {FoodPlace.find().map(function (elem) {
                 return Locations.find({ locationCode: elem.locationCode }).map(function (e) {
                   return <AnyReactComponent
+                      class = 'food'
                       lat = {e.location_x}
                       lng = {e.location_y}
                       text= {'B'}/>;
@@ -127,6 +110,7 @@ class Map extends Component {
               {Events.find().map(function (elem) {
                 return Locations.find({ locationCode: elem.locationCode }).map(function (e) {
                   return <AnyReactComponent
+                      class = 'events'
                       lat = {e.location_x}
                       lng = {e.location_y}
                       text= {'B'}/>;
