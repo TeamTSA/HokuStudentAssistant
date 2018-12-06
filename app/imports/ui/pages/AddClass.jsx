@@ -44,7 +44,8 @@ class AddClass extends Component {
     else {
       const _id = record._id;
       console.log("Updated");
-      UserCourses.update({_id: _id}, {$addToSet: { courseCRN: courseCRN }});
+      UserCourses.update({_id: _id}, {$set: { courseCRN: courseCRN }});
+      window.location.reload(true);
     }
   }
 
@@ -73,11 +74,31 @@ class AddClass extends Component {
                 <Header as="h2" textAlign="center">Your Courses</Header>
                 <Table unstackable>
                   <Table.Header>
+                    <Table.Row>
                     <Table.HeaderCell>CRN</Table.HeaderCell>
                     <Table.HeaderCell>Course</Table.HeaderCell>
-                    <Table.HeaderCell>Description</Table.HeaderCell>
+                    <Table.HeaderCell>Location</Table.HeaderCell>
+                    </Table.Row>
                   </Table.Header>
                   <Table.Body>
+                    {UserCourses.find().map(function(elem){
+                      return elem.courseCRN.map(function(e){
+                        return Courses.find({courseCRN: e}).map(function(elem2){
+                          return <Table.Row>
+                            <Table.Cell>
+                              {e}
+                            </Table.Cell>
+                            <Table.Cell>
+                              {elem2.courseName + ' ' + elem2.courseNumber}
+                            </Table.Cell>
+                            <Table.Cell>
+                              {elem2.courseLocationCode + ' ' + elem2.courseRoomNumber }
+                            </Table.Cell>
+                          </Table.Row>;
+                        });
+                      });
+                    })}
+
                   </Table.Body>
                 </Table>
               </Container>
@@ -100,8 +121,11 @@ AddClass.propTypes = {
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   const userCourseSubscription = Meteor.subscribe('UserCourses');
+  const subscription2 = Meteor.subscribe('Courses');
   return {
-    ready: userCourseSubscription.ready(),
+    courses: Courses.find({}).fetch(),
+    ready: (userCourseSubscription.ready() &&
+        subscription2.ready()),
   };
 })(withRouter(AddClass));
 
