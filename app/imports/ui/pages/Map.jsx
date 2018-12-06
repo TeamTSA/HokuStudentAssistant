@@ -94,7 +94,7 @@ class Map extends Component {
                     { groupBy: "Day", format: "d"}
                 ]}
                 resources = {[
-                    {name: "Monday", id: "A", text: UserCourses.courseCRN, start: "2018-05-02T06:50:00", end: "2018-05-09T06:55:00", resource: "A"},
+                    {name: "Monday", id: "A", text: "Class 1", start: "2018-05-02T06:50:00", end: "2018-05-09T06:55:00", resource: "A"},
                     {name: "Tuesday", id: "B", text: "Class 2", start: "2018-05-03T00:00:00", end: "2018-05-10T00:00:00", resource: "B", barColor: "#38761d", barBackColor: "#93c47d" },
                     {name: "Wednesday", id: "C", text: "Class 3", start: "2018-05-02T00:00:00", end: "2018-05-08T00:00:00", resource: "C", barColor: "#f1c232", barBackColor: "#f1c232" },
                     {name: "Thursday", id: "D", text: "Class 4", start: "2018-05-02T00:00:00", end: "2018-05-08T00:00:00", resource: "E", barColor: "#cc0000", barBackColor: "#ea9999" },
@@ -102,7 +102,7 @@ class Map extends Component {
 
                 ]}
                 events = {[
-                  {id: "A", text: UserCourses.find({}), start: "2018-05-02T06:50:00", end: "2018-05-09T06:55:00", resource: "A"},
+                  {id: "A", text: "Class 1", start: "2018-05-02T06:50:00", end: "2018-05-09T06:55:00", resource: "A"},
                   {id: "B", text: "Class 2", start: "2018-05-03T00:00:00", end: "2018-05-10T00:00:00", resource: "B", barColor: "#38761d", barBackColor: "#93c47d" },
                   {id: "C", text: "Class 3", start: "2018-05-02T00:00:00", end: "2018-05-08T00:00:00", resource: "C", barColor: "#f1c232", barBackColor: "#f1c232" },
                   {id: "D", text: "Class 4", start: "2018-05-02T00:00:00", end: "2018-05-08T00:00:00", resource: "D", barColor: "#cc0000", barBackColor: "#ea9999" },
