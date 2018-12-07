@@ -42,24 +42,89 @@ class Map extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { checked: false};
-    this.handleChange = this.handleChange.bind(this)
+    this.state = {
+      uchecked: false,
+      echecked: false,
+      fchecked: false,
+      bchecked: false,
+    };
   }
-  handleChange() {
-    this.setState({
-      checked: !this.state.checked
-    })
+
+  handleChangeU = () => {
+    this.setState( prevState => ({
+      uchecked: !prevState.uchecked,
+    }));
+  }
+  handleChangeE = () => {
+    this.setState( prevState => ({
+      echecked: !prevState.echecked,
+    }));
+  }
+  handleChangeF = () => {
+    this.setState( prevState => ({
+      fchecked: !prevState.fchecked,
+    }));
+  }
+  handleChangeB = () => {
+    this.setState( prevState => ({
+      bchecked: !prevState.bchecked,
+    }));
   }
 
     onChange = date => this.setState({ date });
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
+
     return (this.props.ready) ? this.renderPage() : <Loader>Getting data</Loader>;
   }
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
+    const courses = this.state.uchecked
+        ? ucourses.map(function(elem){
+          return elem.courseCRN.map(function(e){
+            return Courses.find({courseCRN: e}).map(function(elem2){
+              return Locations.find({ locationCode: elem2.courseLocationCode }).map(function(e2){
+                return <AnyReactComponent
+                    class='ucourse'
+                    lat = {e2.location_x}
+                    lng = {e2.location_y}
+                    text= {elem2.courseName + ' ' + elem2.courseNumber}/>;
+              });
+            });
+          });
+        }) : null;
+    const bathrooms = this.state.bchecked
+      ? Bathrooms.find().map(function (elem) {
+          return Locations.find({ locationCode: elem.locationCode }).map(function (e) {
+            return <AnyReactComponent
+                class = 'bathroom'
+                lat = {e.location_x}
+                lng = {e.location_y}
+                text= {'B'}/>;
+          });
+        }) : null;
+    const events = this.state.echecked
+      ? Events.find().map(function (elem) {
+          return Locations.find({ locationCode: elem.locationCode }).map(function (e) {
+            return <AnyReactComponent
+                class = 'events'
+                lat = {e.location_x}
+                lng = {e.location_y}
+                text= { elem.eventName }/>;
+          });
+        }) : null;
+    const food = this.state.fchecked
+      ? FoodPlace.find().map(function (elem) {
+          return Locations.find({ locationCode: elem.locationCode }).map(function (e) {
+            return <AnyReactComponent
+                class = 'food'
+                lat = {e.location_x}
+                lng = {e.location_y}
+                text = { elem.foodPlaceName }/>;
+          });
+        }) : null;
     return (
         <Grid columns={2} stackable>
         <Grid.Row>
@@ -74,50 +139,11 @@ class Map extends Component {
                 defaultZoom={Map.defaultProps.zoom}
             >
 
-              {ucourses.map(function(elem){
-                return elem.courseCRN.map(function(e){
-                  return Courses.find({courseCRN: e}).map(function(elem2){
-                    return Locations.find({ locationCode: elem2.courseLocationCode }).map(function(e2){
-                      return <AnyReactComponent
-                          class='ucourse'
-                          lat = {e2.location_x}
-                          lng = {e2.location_y}
-                          text= {elem2.courseName + ' ' + elem2.courseNumber}/>;
-                    });
-                  });
-                });
-              })}
+              { courses }
+              { bathrooms }
+              { events }
+              { food }
 
-              {Bathrooms.find().map(function (elem) {
-                return Locations.find({ locationCode: elem.locationCode }).map(function (e) {
-                  return <AnyReactComponent
-                      class = 'bathroom'
-                      lat = {e.location_x}
-                      lng = {e.location_y}
-                      text= {'B'}/>;
-                });
-              })
-              }
-              {FoodPlace.find().map(function (elem) {
-                return Locations.find({ locationCode: elem.locationCode }).map(function (e) {
-                  return <AnyReactComponent
-                      class = 'food'
-                      lat = {e.location_x}
-                      lng = {e.location_y}
-                      text= {'B'}/>;
-                });
-              })
-              }
-              {Events.find().map(function (elem) {
-                return Locations.find({ locationCode: elem.locationCode }).map(function (e) {
-                  return <AnyReactComponent
-                      class = 'events'
-                      lat = {e.location_x}
-                      lng = {e.location_y}
-                      text= {'B'}/>;
-                });
-              })
-              }
             </GoogleMapReact>
 
           </div>
@@ -127,13 +153,13 @@ class Map extends Component {
    <Segment.Group>
      <Segment><Header as='h2' content='Display' textAlign='center'/></Segment>
      <Segment>
-        <Checkbox label='Classes' className='checkbox'/>
+        <Checkbox label='Classes' id='ucourse' checked={ this.state.uchecked} onChange={this.handleChangeU} className='checkbox'/>
         <br />
-        <Checkbox label='Events' className='checkBox'/>
+        <Checkbox label='Events' id='event' checked={ this.state.echecked} onChange={this.handleChangeE} className='checkBox'/>
         <br />
-        <Checkbox label='Food' className='checkBox'/>
+        <Checkbox label='Food' id='food' checked={ this.state.fchecked} onChange={this.handleChangeF} className='checkBox'/>
         <br />
-        <Checkbox label='Bathroom' className='checkBox'/>
+        <Checkbox label='Bathroom' id='bathroom' checked={ this.state.bchecked} onChange={this.handleChangeB} className='checkBox'/>
      </Segment>
      <Segment>
      <Container className='calen'>
