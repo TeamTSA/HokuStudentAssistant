@@ -58209,6 +58209,56 @@
           "locationCode": "POST"
         }
       ]
+    },
+    {
+      "name": "Bathrooms",
+      "contents": [
+        {
+          "gender": "F",
+          "name": "POST 3rd Floor",
+          "locationCode": "POST"
+        },
+        {
+          "gender": "M",
+          "name": "HOLMES 2nd Floor",
+          "locationCode": "HOLM"
+        },
+        {
+          "gender": "F",
+          "name": "Sakamaki 1st Floor",
+          "locationCode": "SAKAM"
+        },
+        {
+          "gender": "M",
+          "name": "Watanabe 1st Floor",
+          "locationCode": "WAT"
+        },
+        {
+          "gender": "Both",
+          "name": "Campus Center Restroom",
+          "locationCode": "CCTR"
+        },
+        {
+          "gender": "Both",
+          "name": "Hamilton Library Restroom",
+          "locationCode": "HL"
+        },
+        {
+          "gender": "Both",
+          "name": "Sinclair Library Restroom",
+          "locationCode": "SL"
+        },
+        {
+          "gender": "Both",
+          "name": "Crawford Hall 1st Floor",
+          "locationCode": "CR"
+        },
+        {
+          "gender": "Both",
+          "name": "BUSAD Restroom",
+          "locationCode": "BUSAD"
+        }
+      ]
     }
   ]
 }

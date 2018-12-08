@@ -29,7 +29,7 @@ function restoreCollection(collection, restoreJSON) {
 
 Meteor.startup(() => {
   /** Only initialize database if it's empty. */
-  const collectionList = [Locations, Courses, FoodPlace];
+  const collectionList = [Locations, Courses, FoodPlace, Bathrooms];
   /*const totalDocuments = _.reduce(collectionList, function reducer(memo, collection) {
     return memo + collection.count();
   }, 0);
@@ -47,4 +47,3 @@ Meteor.startup(() => {
   });
 });
 
-//restrat serer
