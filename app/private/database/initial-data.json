@@ -58174,6 +58174,41 @@
           "courseScheduleEndTime": "1320"
         }
       ]
+    },
+    {
+      "name": "FoodPlace",
+      "contents": [
+        {
+          "foodPlaceName": "Da Spot",
+          "foodPlaceDescription": "A healthy food lunch wagon with smoothies",
+          "foodPlaceType": "Health Food",
+          "locationCode": "KUY"
+        },
+        {
+          "foodPlaceName": "Beefy Ramen",
+          "foodPlaceDescription": "A ramen food truck",
+          "foodPlaceType": "Ramen",
+          "locationCode": "BIOMD"
+        },
+        {
+          "foodPlaceName": "Campus Center Food Court",
+          "foodPlaceDescription": "A bunch of small food restaurants",
+          "foodPlaceType": "Assorted",
+          "locationCode": "CCTR"
+        },
+        {
+          "foodPlaceName": "Punchbowl Grill",
+          "foodPlaceDescription": "A sandwiches and coffee lunch truck",
+          "foodPlaceType": "Sandwich",
+          "locationCode": "KRA"
+        },
+        {
+          "foodPlaceName": "Sister Truck",
+          "foodPlaceDescription": "A korean food lunch truck",
+          "foodPlaceType": "Korean",
+          "locationCode": "POST"
+        }
+      ]
     }
   ]
 }

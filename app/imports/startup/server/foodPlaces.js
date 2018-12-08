@@ -19,7 +19,7 @@ if (FoodPlace.find().count() === 0) {
 /** This subscription publishes only the documents associated with the logged in user */
 Meteor.publish('FoodPlace', function publish() {
   if (this.userId) {
-    return FoodPlace.find();
+    return FoodPlace.find({});
   }
   return this.ready();
 });
@@ -27,7 +27,7 @@ Meteor.publish('FoodPlace', function publish() {
 /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
 Meteor.publish('FoodPlaceAdmin', function publish() {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return FoodPlace.find();
+    return FoodPlace.find({});
   }
   return this.ready();
 });
