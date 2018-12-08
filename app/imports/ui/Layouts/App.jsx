@@ -37,12 +37,11 @@ class App extends React.Component {
               <ProtectedRoute path="/list" component={ListStuff}/>
               <ProtectedRoute path="/map" component={Map}/>
               <ProtectedRoute path="/faq" component={Info}/>
-              <ProtectedRoute path="/add" component={AddEvent}/>
               <ProtectedRoute path="/add-class" component={AddClass}/>
-              <ProtectedRoute path="/add" component={AddStuff}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
               <ProtectedRoute path="/preferences" component={Preferences}/>
               <AdminProtectedRoute path="/admin" component={Admin}/>
+              <ProtectedRoute path="/add" component={AddEvent}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
             </Switch>
