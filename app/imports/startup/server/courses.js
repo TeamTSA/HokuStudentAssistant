@@ -19,7 +19,7 @@ if (Courses.find().count() === 0) {
 /** This subscription publishes only the documents associated with the logged in user */
 Meteor.publish('Courses', function publish() {
   if (this.userId) {
-    return Courses.find();
+    return Courses.find({});
   }
   return this.ready();
 });
@@ -27,7 +27,7 @@ Meteor.publish('Courses', function publish() {
 /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
 Meteor.publish('CoursesAdmin', function publish() {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Courses.find();
+    return Courses.find({});
   }
   return this.ready();
 });

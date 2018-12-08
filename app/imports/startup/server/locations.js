@@ -19,7 +19,7 @@ if (Locations.find().count() === 0) {
 /** This subscription publishes only the documents associated with the logged in user */
 Meteor.publish('Locations', function publish() {
   if (this.userId) {
-    return Locations.find();
+    return Locations.find({});
   }
   return this.ready();
 });
@@ -27,7 +27,7 @@ Meteor.publish('Locations', function publish() {
 /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
 Meteor.publish('LocationsAdmin', function publish() {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Locations.find();
+    return Locations.find({});
   }
   return this.ready();
 });
